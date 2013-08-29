@@ -98,6 +98,7 @@ You can use some html text markup as bold and italic in your changelog.xml
         ....
 ```
 You can use:
+
 1. `[b] text [/b]` for a <b>bold style</b>, or `&lt;b&gt; text &lt;/b&gt;`
 2. `[i] text [/i]` for an <i>italic style</i>, or `&lt;b&gt; text &lt;/i&gt;`
 
