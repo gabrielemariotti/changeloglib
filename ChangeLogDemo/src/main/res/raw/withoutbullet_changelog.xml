@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog bulletedList="false">
+
+    <!-- It is a template file for changelog.xml -->
+    <!-- Library uses res/raw/changelog.xml file.
+        If you want to use a custom file you can specify
+        chg:changeLogFileResourceId="@raw/custom_changelog"
+        in your View component in layout file -->
+
+    <changelogversion versionName="1.2" changeDate="June 17,2013">
+        <changelogtext>[b]Added[/b] new feature to share data</changelogtext>
+        <changelogtext>performance &lt;b&gt;improvement&lt;/b&gt;</changelogtext>
+        <changelogtext>[b]New[/b] setting options</changelogtext>
+    </changelogversion>
+
+    <changelogversion versionName="1.1" changeDate="18/01/2013">
+        <changelogtext>Fixed issue on wifi connection</changelogtext>
+    </changelogversion>
+
+</changelog>

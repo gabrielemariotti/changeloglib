@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog bulletedList="true">
+
+    <!-- It is the real library changelog.xml -->
+
+    <changelogversion versionName="1.0" changeDate="28/08/2013">
+        <changelogtext>Initial release</changelogtext>
+    </changelogversion>
+
+</changelog>

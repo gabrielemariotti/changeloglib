@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ChangeLog Demo -->
+    <string name="demo_changelog_app_name">ChangeLib Demo</string>
+
+    <!-- About -->
+    <string name="title_about">About</string>
+    <string name="about_ok">OK</string>
+    <string name="about_body"><![CDATA[
+        <b>ChangeLog Library & Demo</b><br>
+        Version %s<br><br>
+        <a href="https://github.com/gabrielemariotti/changelib">Source</a><br><br>
+        <a href="https://plus.google.com/114432517923423045208">By Gabriele Mariotti</a><br><br>
+
+    ]]></string>
+
+    <!-- Menu -->
+    <string name="demo_changelog_menu_changelog">Library change log</string>
+    <string name="demo_changelog_menu_about">About</string>
+
+    <!-- Title -->
+    <string name="demo_changelog_title_standard">Standard Example</string>
+    <string name="demo_changelog_title_customexml">Custom changelog xml file Example</string>
+    <string name="demo_changelog_title_withoutbulletpoint">Without Bullet Point Example</string>
+    <string name="demo_changelog_title_customlayout">Custom Layout Header Example</string>
+    <string name="demo_changelog_title_customlayoutrow">Custom Layout Row Example</string>
+    <string name="demo_changelog_title_debug">Debug</string>
+    <string name="demo_changelog_title_changelog">Change Log</string>
+    <string name="demo_changelog_title_standarddialog">Standard Dialog Example</string>
+
+    <!-- Error message -->
+    <string name="demo_changelog_error_debug">An error occurred while parsing xml file</string>
+
+    <!-- Label -->
+    <string name="demo_changelog_label_debug_spinnerText">Choose a file</string>
+
+
+
+    <!-- String for Custom Version Header
+         Use string with quotes if you want a space -->
+    <!-- <string name="changelog_header_version">"Version "</string> -->
+
+    <!-- BulletPoint
+         If you don't want a bulletpoint you can specify it in your changelog.xml-->
+    <!--<string name="changelog_row_bulletpoint">\u2022"</string> -->
+
+</resources>
