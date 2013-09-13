@@ -9,7 +9,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/listPreferredItemHeightSmall"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
@@ -35,7 +35,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="5dp"
-                android:minHeight="@dimen/listPreferredItemHeightSmall"
+                android:minHeight="?android:attr/listPreferredItemHeightSmall"
                 android:textAppearance="@android:style/TextAppearance.Small"
                 />
     </LinearLayout>

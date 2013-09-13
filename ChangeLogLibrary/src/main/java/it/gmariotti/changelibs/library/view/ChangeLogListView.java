@@ -15,9 +15,11 @@
  ******************************************************************************/
 package it.gmariotti.changelibs.library.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +30,7 @@ import it.gmariotti.changelibs.R;
 import it.gmariotti.changelibs.library.Constants;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
 import it.gmariotti.changelibs.library.internal.ChangeLogAdapter;
+import it.gmariotti.changelibs.library.internal.ChangeLogRow;
 import it.gmariotti.changelibs.library.parser.XmlParser;
 
 /**
@@ -172,12 +175,20 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
             return null;
         }
 
-
+        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         protected void onPostExecute(ChangeLog chg) {
 
             //Notify data changed
             if (chg!=null){
-                mAdapter.addAll(chg.getRows());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+                    mAdapter.addAll(chg.getRows());
+                }else{
+                    if(chg.getRows()!=null){
+                        for(ChangeLogRow row:chg.getRows()){
+                            mAdapter.add(row);
+                        }
+                    }
+                }
                 mAdapter.notifyDataSetChanged();
             }
         }
