@@ -19,62 +19,62 @@
 
 <resources>
 
-    <style name="Theme.Changelog" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarItemBackground">@drawable/selectable_background_changelog</item>
-        <item name="android:popupMenuStyle">@style/PopupMenu.Changelog</item>
-        <item name="android:dropDownListViewStyle">@style/DropDownListView.Changelog</item>
-        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Changelog</item>
-        <item name="android:actionDropDownStyle">@style/DropDownNav.Changelog</item>
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Changelog</item>
-        <item name="android:actionModeBackground">@drawable/cab_background_top_changelog</item>
-        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_changelog</item>
-        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Changelog</item>
-        
-        
+    <style name="Theme.Changelog" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarItemBackground">@drawable/selectable_background_changelog</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Changelog</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Changelog</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Changelog</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Changelog</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Changelog</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_changelog</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_changelog</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Changelog</item>
+
+
     </style>
 
-    <style name="ActionBar.Solid.Changelog" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@drawable/ab_background_textured_changelog</item>
-        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_changelog</item>
-        <item name="android:backgroundSplit">@drawable/ab_background_textured_changelog</item>
-        <item name="android:progressBarStyle">@style/ProgressBar.Changelog</item>
+    <style name="ActionBar.Solid.Changelog" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_changelog</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_changelog</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_changelog</item>
+        <item name="progressBarStyle">@style/ProgressBar.Changelog</item>
     </style>
 
-    <style name="ActionBar.Transparent.Changelog" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@drawable/ab_transparent_changelog</item>
-        <item name="android:progressBarStyle">@style/ProgressBar.Changelog</item>
+    <style name="ActionBar.Transparent.Changelog" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@drawable/ab_transparent_changelog</item>
+        <item name="progressBarStyle">@style/ProgressBar.Changelog</item>
     </style>
 
-    <style name="PopupMenu.Changelog" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_changelog</item>	
+    <style name="PopupMenu.Changelog" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_changelog</item>
     </style>
 
-    <style name="DropDownListView.Changelog" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
+    <style name="DropDownListView.Changelog" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_changelog</item>
     </style>
 
-    <style name="ActionBarTabStyle.Changelog" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
+    <style name="ActionBarTabStyle.Changelog" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_changelog</item>
     </style>
 
-    <style name="DropDownNav.Changelog" parent="@android:style/Widget.Holo.Light.Spinner">
+    <style name="DropDownNav.Changelog" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_changelog</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_changelog</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_changelog</item>
     </style>
-    
-    <style name="ProgressBar.Changelog" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
+
+    <style name="ProgressBar.Changelog" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_changelog</item>
     </style>
-    
-    <style name="ActionButton.CloseMode.Changelog" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode">
+
+    <style name="ActionButton.CloseMode.Changelog" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_changelog</item>
     </style>
 
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Changelog.Widget" parent="@android:style/Theme.Holo">
-        <item name="android:popupMenuStyle">@style/PopupMenu.Changelog</item>
-        <item name="android:dropDownListViewStyle">@style/DropDownListView.Changelog</item>
+    <style name="Theme.Changelog.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.Changelog</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Changelog</item>
     </style>
 
 </resources>

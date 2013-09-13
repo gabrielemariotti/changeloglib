@@ -17,10 +17,10 @@ package it.gmariotti.changelibs.demo.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 
 import it.gmariotti.changelibs.demo.R;
@@ -31,7 +31,7 @@ import it.gmariotti.changelibs.library.view.ChangeLogListView;
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public class DialogStandardFragment extends DialogFragment{
+public class DialogStandardFragment extends DialogFragment {
 
         public DialogStandardFragment() {
         }

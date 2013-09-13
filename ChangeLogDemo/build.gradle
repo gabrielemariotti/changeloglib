@@ -17,7 +17,7 @@ android {
     buildToolsVersion "18.0.1"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 8
         targetSdkVersion 18
     }
 }
@@ -27,4 +27,6 @@ dependencies {
     compile project(':ChangeLogLibrary')
     // Support Libraries
     compile 'com.android.support:support-v4:18.0.0'
+    //ActionBarCompat
+    compile 'com.android.support:appcompat-v7:18.0.+'
 }

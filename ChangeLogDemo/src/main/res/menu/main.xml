@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:chg="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_changelog"
           android:title="@string/demo_changelog_menu_changelog"
           android:orderInCategory="100"
-          android:showAsAction="never" />
+          chg:showAsAction="never" />
 
     <item android:id="@+id/menu_about"
           android:title="@string/demo_changelog_menu_about"
           android:orderInCategory="1"
-          android:showAsAction="never" />
+          chg:showAsAction="never" />
 
 
 </menu>

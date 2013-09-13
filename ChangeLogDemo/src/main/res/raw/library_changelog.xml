@@ -2,6 +2,9 @@
 <changelog bulletedList="true">
 
     <!-- It is the real library changelog.xml -->
+    <changelogversion versionName="1.1" changeDate="14/09/2013">
+        <changelogtext>Added support for API 8+</changelogtext>
+    </changelogversion>
 
     <changelogversion versionName="1.0" changeDate="28/08/2013">
         <changelogtext>Initial release</changelogtext>

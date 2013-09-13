@@ -8,5 +8,6 @@
       class="it.gmariotti.changelibs.library.view.ChangeLogListView"
       android:id="@+id/view"
       android:layout_gravity="center"
+      android:background="@android:color/white"
       chg:changeLogFileResourceId="@raw/library_changelog"
         />
