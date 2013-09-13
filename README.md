@@ -11,10 +11,11 @@ ChangeLog Library provides an easy way to display a change log in your Android a
 
 ChangeLog Library provides a custom `ListView` to display a change log through a xml file.
 
-* **it supports multi language**
 * you can use it in Activities, Fragments, Dialogs
 * it supports html text markup as bold and italics
 * you can customize layout and behaviour
+* it supports multi language
+* it supports API 8+
 
 ## Usage
 

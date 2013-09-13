@@ -2,7 +2,7 @@
 
 There are some usage examples.
 
-See the **customisation and tips** [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/CUSTOMIZATION.md) for more information.
+See the **customization and tips** [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/CUSTOMIZATION.md) for more information.
 
 ## Standard Example
 
