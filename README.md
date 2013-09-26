@@ -68,6 +68,15 @@ For more detailed information and examples you can read this [document:](https:/
 See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/CUSTOMIZATION.md) for more information.
 
 ---
+## Gradle
+
+ChangeLog Library is now pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
+
+    dependencies {
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.2.0'
+    }
+
+
 
 Credits
 -------
