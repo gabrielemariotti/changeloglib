@@ -2,6 +2,13 @@
 <changelog bulletedList="true">
 
     <!-- It is the real library changelog.xml -->
+    <!-- It is the real library changelog.xml -->
+    <changelogversion versionName="1.3" changeDate="19/10/2013">
+        <changelogtext>Added support for API 7</changelogtext>
+        <changelogtext>Moved to gradle 1.8 and gradle-plugin 0.6.x</changelogtext>
+        <changelogtext>Removed unnecessary IntelliJ project files from repo</changelogtext>
+    </changelogversion>
+
     <changelogversion versionName="1.2" changeDate="25/09/2013">
         <changelogtext>Changelog Library is now pushed to Maven Central as a AAR</changelogtext>
     </changelogversion>
