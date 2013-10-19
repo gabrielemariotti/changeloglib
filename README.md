@@ -15,7 +15,7 @@ ChangeLog Library provides a custom `ListView` to display a change log through a
 * it supports html text markup as bold and italics
 * you can customize layout and behaviour
 * it supports multi language
-* it supports API 8+
+* it supports API 7+
 
 ## Usage
 
@@ -62,18 +62,23 @@ Last, if you would like a multi language changelog, you just have to put the tra
 
 For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)
 
+Try out:
+
+* the apk with the [sample application](https://github.com/gabrielemariotti/changeloglib/blob/master/apk/demo-1.3.0.apk?raw=true)
+* browse the [source code of the sample application](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo) for a complete example of use.
+
 
 ## Customizations and tips
 
 See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/CUSTOMIZATION.md) for more information.
 
 ---
-## Gradle
+## Including in your project
 
-ChangeLog Library is now pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
+ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.2.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.3.0'
     }
 
 
@@ -82,6 +87,19 @@ Credits
 -------
 
 Author: Gabriele Mariotti (gabri.mariotti@gmail.com)
+
+<a href="https://plus.google.com/u/0/114432517923423045208">
+  <img alt="Follow me on Google+"
+       src="https://github.com/gabrielemariotti/changeloglib/raw/master/ChangeLogDemo/images/g+64.png" />
+</a>
+<a href="https://twitter.com/GabMarioPower">
+  <img alt="Follow me on Twitter"
+       src="https://github.com/gabrielemariotti/changeloglib/raw/master/ChangeLogDemo/images/twitter64.png" />
+</a>
+<a href="http://it.linkedin.com/in/gabrielemariotti">
+  <img alt="Follow me on LinkedIn"
+       src="https://github.com/gabrielemariotti/changeloglib/raw/master/ChangeLogDemo/images/linkedin.png" />
+</a>
 
 License
 -------
