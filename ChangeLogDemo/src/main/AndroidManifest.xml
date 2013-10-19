@@ -3,7 +3,7 @@
     package="it.gmariotti.changelibs.demo">
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="7"
         android:targetSdkVersion="18" />
 
     <application
