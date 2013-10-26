@@ -70,7 +70,7 @@ Try out:
 
 ## Customizations and tips
 
-See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/CUSTOMIZATION.md) for more information.
+See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md) for more information.
 
 ---
 ## Including in your project
@@ -81,6 +81,7 @@ ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add t
         compile 'com.github.gabrielemariotti.changeloglib:library:1.3.0'
     }
 
+[See this page for more info](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/BUILD.md).
 
 
 Credits
