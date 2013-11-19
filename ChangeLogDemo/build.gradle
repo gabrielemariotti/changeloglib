@@ -13,12 +13,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "18.1.1"
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 18
+        targetSdkVersion 19
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
     }
@@ -40,9 +40,9 @@ dependencies {
     // ChangeLog Library
     compile project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:19.0.0'
     //ActionBarCompat
-    compile 'com.android.support:appcompat-v7:18.0.+'
+    compile 'com.android.support:appcompat-v7:19.0.+'
 }
 
 def Properties props = new Properties()
