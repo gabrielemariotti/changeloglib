@@ -15,7 +15,6 @@
  ******************************************************************************/
 package it.gmariotti.changelibs.library.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
@@ -47,6 +46,7 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
     protected int mRowLayoutId= Constants.mRowLayoutId;
     protected int mRowHeaderLayoutId=Constants.mRowHeaderLayoutId;
     protected int mChangeLogFileResourceId=Constants.mChangeLogFileResourceId;
+    protected String mChangeLogFileResourceUrl=null;
 
     //--------------------------------------------------------------------------
     protected static String TAG="ChangeLogListView";
@@ -110,6 +110,7 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
             //Changelog.xml file
             mChangeLogFileResourceId = a.getResourceId(R.styleable.ChangeLogListView_changeLogFileResourceId,mChangeLogFileResourceId);
 
+            mChangeLogFileResourceUrl = a.getString(R.styleable.ChangeLogListView_changeLogFileResourceUrl);
             //String which is used in header row for Version
             //mStringVersionHeader= a.getResourceId(R.styleable.ChangeLogListView_StringVersionHeader,mStringVersionHeader);
 
@@ -125,7 +126,11 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
 
         try{
             //Read and parse changelog.xml
-            XmlParser parse = new XmlParser(getContext(),mChangeLogFileResourceId);
+            XmlParser parse;
+            if (mChangeLogFileResourceUrl!=null)
+                parse = new XmlParser(getContext(),mChangeLogFileResourceUrl);
+            else
+                parse = new XmlParser(getContext(),mChangeLogFileResourceId);
             //ChangeLog chg=parse.readChangeLogFile();
             ChangeLog chg = new ChangeLog();
 
@@ -175,7 +180,6 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
             return null;
         }
 
-        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         protected void onPostExecute(ChangeLog chg) {
 
             //Notify data changed

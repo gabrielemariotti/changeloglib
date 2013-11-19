@@ -24,8 +24,10 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 import it.gmariotti.changelibs.library.Constants;
+import it.gmariotti.changelibs.library.Util;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
 import it.gmariotti.changelibs.library.internal.ChangeLogException;
 import it.gmariotti.changelibs.library.internal.ChangeLogRow;
@@ -68,6 +70,7 @@ public class XmlParser extends BaseParser {
     /** TAG for logging **/
     private static String TAG="XmlParser";
     private int mChangeLogFileResourceId= Constants.mChangeLogFileResourceId;
+    private String mChangeLogFileResourceUrl= null;
 
     //--------------------------------------------------------------------------------
     //TAGs and ATTRIBUTEs in xml file
@@ -108,6 +111,18 @@ public class XmlParser extends BaseParser {
         super(context);
         this.mChangeLogFileResourceId=changeLogFileResourceId;
     }
+
+    /**
+     * Create a new instance for a context and with a custom url .
+     *
+     * @param context  current Context
+     * @param changeLogFileResourceUrl  url with xml files
+     */
+    public XmlParser(Context context,String changeLogFileResourceUrl){
+        super(context);
+        this.mChangeLogFileResourceUrl=changeLogFileResourceUrl;
+    }
+
     //--------------------------------------------------------------------------------
 
 
@@ -124,7 +139,16 @@ public class XmlParser extends BaseParser {
         ChangeLog chg=null;
 
         try {
-            InputStream is = mContext.getResources().openRawResource(mChangeLogFileResourceId);
+            InputStream is=null;
+
+            if (mChangeLogFileResourceUrl!=null){
+                if (Util.isConnected(super.mContext)){
+                    URL url = new URL(mChangeLogFileResourceUrl);
+                    is = url.openStream();
+                }
+            }else{
+                is = mContext.getResources().openRawResource(mChangeLogFileResourceId);
+            }
             if (is!=null){
 
                 // Create a new XML Pull Parser.
