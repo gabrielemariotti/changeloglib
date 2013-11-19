@@ -114,4 +114,30 @@ The quickest way to customize this character is to specify this resource in your
 
 Use string with quotes if you want a space.
 
+
+### Use an url to download the changelog.xml file
+
+Library uses `res/raw/changelog.xml`.
+You can use a url link to download your xml file with `chg:changeLogFileResourceUrl` attribute in `ChangeLogListView` element.
+
+``` xml
+
+    <!-- Custom xml file Example and custom header layout -->
+    <view xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:chg="http://schemas.android.com/apk/res-auto"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          class="it.gmariotti.changelibs.library.view.ChangeLogListView"
+          chg:changeLogFileResourceUrl="http://mydomain.org/changelog.xml"
+    />
+```
+
+Pay attention:
+To use this feature you have to add these user-permissions to your app:
+
+``` xml
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+```
+
 For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)
