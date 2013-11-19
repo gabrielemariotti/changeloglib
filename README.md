@@ -78,7 +78,7 @@ See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/t
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.3.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.4.0'
     }
 
 [See this page for more info](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/BUILD.md).

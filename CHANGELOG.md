@@ -1,6 +1,12 @@
 Change Log
 ===============================================================================
 
+Version 1.4.0 *(2013-11-19)*
+----------------------------
+ * Added a new feature to use an url to download your changelog.xml file [(doc)](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md#use-an-url-to-download-the-changelog.xml-file)
+ * Migrated library and demo to sdk 19 (updated gradle files)
+
+
 Version 1.3.0 *(2013-10-19)*
 ----------------------------
 
