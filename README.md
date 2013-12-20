@@ -64,7 +64,7 @@ For more detailed information and examples you can read this [document:](https:/
 
 Try out:
 
-* the apk with the [sample application](https://github.com/gabrielemariotti/changeloglib/blob/master/apk/demo-1.3.0.apk?raw=true)
+* the apk with the [sample application](https://github.com/gabrielemariotti/changeloglib/blob/master/apk/demo-1.4.0.apk?raw=true)
 * browse the [source code of the sample application](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo) for a complete example of use.
 
 
@@ -81,7 +81,7 @@ ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add t
         compile 'com.github.gabrielemariotti.changeloglib:library:1.4.0'
     }
 
-[See this page for more info](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/BUILD.md).
+[To build the library and demo locally you can see this page for more info](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/BUILD.md).
 
 
 Credits

@@ -24,9 +24,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import it.gmariotti.changelibs.R;
 import it.gmariotti.changelibs.library.Constants;
+import it.gmariotti.changelibs.library.Util;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
 import it.gmariotti.changelibs.library.internal.ChangeLogAdapter;
 import it.gmariotti.changelibs.library.internal.ChangeLogRow;
@@ -141,7 +143,10 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
                 mAdapter.setmRowHeaderLayoutId(mRowHeaderLayoutId);
 
                 //Parse in a separate Thread to avoid UI block with large files
-                new ParseAsyncTask(mAdapter,parse).execute();
+                if (mChangeLogFileResourceUrl==null || (mChangeLogFileResourceUrl!=null && Util.isConnected(getContext())))
+                    new ParseAsyncTask(mAdapter,parse).execute();
+                else
+                    Toast.makeText(getContext(),R.string.changelog_internal_error_internet_connection,Toast.LENGTH_LONG).show();
                 setAdapter(mAdapter);
             }else{
                 setAdapter(null);

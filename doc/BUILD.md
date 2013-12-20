@@ -16,23 +16,23 @@ Card Library is pushed to Maven Central as a AAR, so you just need to add the fo
 
 ## Reference this project as a library in Eclipse
 
-if you would like to use this library in Eclipse you have to do these steps:
+If you would like to use this library in Eclipse you have to do these steps:
 
-- clone a copy of this repository, or download it.
-- import the `ChangeLogLibrary` code in your workspace
-- mark java(*) folder as source (right click on folder -> Build-Path -> use as source folder)
-- mark ChangeLogLibrary as Android Library (right click -> Properties -> Android -> Is library)
-- use API>=16 to compile library (right click -> Properties -> Android)
+- clone a copy of this repository, or download it (outside eclipse workspace).
+- import the `ChangeLogLibrary` code in your workspace starting from ChangeLogLibrary folder. The Wizard will import the code in ChangeLogLibrary/src/main. I suggest you to name it "chgloglib" (or another name) instead of "main".
+- mark java(*) folder as source (right click on folder -> Build-Path -> use as source folder).You can also remove the src folder, from the project.
+- mark chgloglib as Android Library (right click -> Properties -> Android -> Is library)
+- The library targets SDK 19 and works with minSdk=7. In any cases you need to use API>=16 to compile library (right click -> Properties -> Android)
 
 
 If you would like to build the demo you have to do these additional steps:
 
-- import the `ChangeLogDemo` code in your workspace
+- import the `ChangeLogDemo` code in your workspace starting from ChangeLogDemo folder.
 - mark java(*) folder as source
-- add ChangeLogLibrary as dependency ( right click -> Properties -> Android -> Add library)
+- add chgloglib as dependency ( right click -> Properties -> Android -> Add library)
 - add v7 appcompat library following [official guide](http://developer.android.com/tools/support-library/setup.html#libs-with-res)
 - add v7-library as dependency ( right click -> Properties -> Android -> Add library)
-- use API>=16 to compile demo.
+- The demo targets SDK 19 and works with minSdk=7. In any cases you need to use API>=16 to compile it (right click -> Properties -> Android).
 
 
 (*) Eclipse uses src and res as source folders.
