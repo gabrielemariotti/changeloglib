@@ -12,6 +12,8 @@
         <changelogtext>Weather [i]extension[/i] now shows high/low information</changelogtext>
         <changelogtext>Fixed a number of bugs with the Gmail and SMS extensions</changelogtext>
         <changelogtext>[b]For developers:[/b] New API features</changelogtext>
+        <changelogbug>NPE while loading remote changelog</changelogbug>
+        <changelogimprovement>Added new remote changelog feature</changelogimprovement>
     </changelogversion>
 
     <changelogversion versionName="1.4.3" changeDate="March 25, 2013">

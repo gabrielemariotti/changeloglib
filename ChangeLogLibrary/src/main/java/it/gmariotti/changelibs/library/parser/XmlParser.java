@@ -25,6 +25,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.gmariotti.changelibs.library.Constants;
 import it.gmariotti.changelibs.library.Util;
@@ -79,12 +81,20 @@ public class XmlParser extends BaseParser {
     private static final String TAG_CHANGELOG="changelog";
     private static final String TAG_CHANGELOGVERSION="changelogversion";
     private static final String TAG_CHANGELOGTEXT="changelogtext";
+    private static final String TAG_CHANGELOGBUG="changelogbug";
+    private static final String TAG_CHANGELOGIMPROVEMENT="changelogimprovement";
 
     private static final String ATTRIBUTE_BULLETEDLIST="bulletedList";
     private static final String ATTRIBUTE_VERSIONNAME="versionName";
     private static final String ATTRIBUTE_CHANGEDATE="changeDate";
     private static final String ATTRIBUTE_CHANGETEXT="changeText";
     private static final String ATTRIBUTE_CHANGETEXTTITLE= "changeTextTitle";
+
+    private static List<String> mChangeLogTags = new ArrayList<String>() {{
+        add(TAG_CHANGELOGBUG);
+        add(TAG_CHANGELOGIMPROVEMENT);
+        add(TAG_CHANGELOGTEXT);
+    }};
 
     //--------------------------------------------------------------------------------
     //Constructors
@@ -256,7 +266,7 @@ public class XmlParser extends BaseParser {
             String tag = parser.getName();
             Log.d(TAG,"Processing tag="+tag);
 
-            if (tag.equals(TAG_CHANGELOGTEXT)){
+            if (mChangeLogTags.contains(tag)){
                 readChangeLogRowNode(parser, changeLog,versionName);
             }
         }
@@ -270,46 +280,39 @@ public class XmlParser extends BaseParser {
      * @throws Exception
      */
     private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog,String versionName) throws  Exception{
-
-        if (parser==null) return;
-
-        parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOGTEXT);
-
         String tag = parser.getName();
-        if (tag.equals(TAG_CHANGELOGTEXT)){
-            ChangeLogRow row=new ChangeLogRow();
-            row.setVersionName(versionName);
+        ChangeLogRow row=new ChangeLogRow();
+        row.setVersionName(versionName);
 
-            // Read attributes
-            String changeLogTextTitle=parser.getAttributeValue(null,ATTRIBUTE_CHANGETEXTTITLE);
-            if (changeLogTextTitle!=null)
-                row.setChangeTextTitle(changeLogTextTitle);
+        // Read attributes
+        String changeLogTextTitle=parser.getAttributeValue(null,ATTRIBUTE_CHANGETEXTTITLE);
+        if (changeLogTextTitle!=null)
+            row.setChangeTextTitle(changeLogTextTitle);
 
-            // It is possible to force bulleted List
-            String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
-            if (bulletedList!=null){
-                if (bulletedList.equals("true")){
-                    row.setBulletedList(true);
-                }else{
-                    row.setBulletedList(false);
-                }
+        // It is possible to force bulleted List
+        String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
+        if (bulletedList!=null){
+            if (bulletedList.equals("true")){
+                row.setBulletedList(true);
             }else{
-                row.setBulletedList(super.bulletedList);
+                row.setBulletedList(false);
             }
-
-            // Read text
-            if (parser.next() == XmlPullParser.TEXT) {
-                String changeLogText=parser.getText();
-                if (changeLogText==null)
-                    throw new ChangeLogException("ChangeLogText required in changeLogText node");
-                row.parseChangeText(changeLogText);
-                parser.nextTag();
-            }
-            changeLog.addRow(row);
-
-            Log.d(TAG,"Added row:"+row.toString());
+        }else{
+            row.setBulletedList(super.bulletedList);
         }
-        parser.require(XmlPullParser.END_TAG, null,TAG_CHANGELOGTEXT);
+
+        // Read text
+        if (parser.next() == XmlPullParser.TEXT) {
+            String changeLogText=parser.getText();
+            if (changeLogText==null)
+                throw new ChangeLogException("ChangeLogText required in changeLogText node");
+            row.parseChangeText(changeLogText);
+            row.setType(tag.equalsIgnoreCase(TAG_CHANGELOGBUG) ? ChangeLogRow.BUGFIX : tag.equalsIgnoreCase(TAG_CHANGELOGIMPROVEMENT) ? ChangeLogRow.IMPROVEMENT : ChangeLogRow.DEFAULT);
+            parser.nextTag();
+        }
+        changeLog.addRow(row);
+
+        Log.d(TAG,"Added row:"+row.toString());
     }
 
 }
