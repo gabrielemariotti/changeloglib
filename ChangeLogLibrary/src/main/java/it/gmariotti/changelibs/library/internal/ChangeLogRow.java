@@ -22,6 +22,10 @@ package it.gmariotti.changelibs.library.internal;
  */
 public class ChangeLogRow {
 
+   public static final int DEFAULT = 0;
+    public static final int BUGFIX = 1;
+    public static final int IMPROVEMENT = 2;
+
    /**
     * Flag to indicate a header row
     */
@@ -55,7 +59,12 @@ public class ChangeLogRow {
     */
    private String changeText;
 
-   //-------------------------------------------------------------------------------------------------------------------
+    /**
+     * The type of change: bug, improvement, default.
+      */
+   private int type;
+
+    //-------------------------------------------------------------------------------------------------------------------
 
     /**
      * Replace special tags [b] [i]
@@ -105,7 +114,16 @@ public class ChangeLogRow {
 
 
     public String getChangeText() {
-        return changeText;
+        String prefix = "";
+        switch(type) {
+            case BUGFIX:
+                prefix = "<b>Bug:</b> ";
+                break;
+            case IMPROVEMENT:
+                prefix = "<b>Improvement:</b> ";
+                break;
+        }
+        return prefix + changeText;
     }
 
     public void setChangeText(String changeText) {
@@ -136,5 +154,7 @@ public class ChangeLogRow {
         this.changeDate = changeDate;
     }
 
-
+    public void setType(int type) {
+        this.type = type;
+    }
 }
