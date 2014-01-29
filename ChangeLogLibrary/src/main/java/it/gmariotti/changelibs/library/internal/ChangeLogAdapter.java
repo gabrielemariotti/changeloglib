@@ -150,7 +150,7 @@ public class ChangeLogAdapter extends ArrayAdapter<ChangeLogRow> {
 
                 if (item != null && viewHolder != null) {
                     if (viewHolder.text != null){
-                        viewHolder.text.setText(Html.fromHtml(item.getChangeText()));
+                        viewHolder.text.setText(Html.fromHtml(item.getChangeText(mContext)));
                     }
                     if (viewHolder.bulletText!=null){
                         if (item.isBulletedList()){

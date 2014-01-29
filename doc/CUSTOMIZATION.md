@@ -140,4 +140,30 @@ To use this feature you have to add these user-permissions to your app:
     <uses-permission android:name="android.permission.INTERNET" />
 ```
 
+### Bug and improvement tags
+
+You can use 2 custom changelogtext tags that will pre-pend the change log text with **Bug:** and **New:** respectively.
+
+``` xml
+   <changelogversion versionName="0.9" changeDate="Aug 11,2013">
+        <changelogtext>[b]New![/b] Add new attrs to customize header and row layout</changelogtext>
+        <changelogimprovement>Option to specify a manual location for weather</changelogimprovement>
+        <changelogtext>performance &lt;b&gt;improvement&lt;/b&gt;</changelogtext>
+        <changelogbug>Fixed a number of bugs with the Gmail and SMS extensions</changelogbug>
+   </changelogversion>
+```
+
+You can customize the prefix text in your project overriding these values in strings.xml
+
+``` xml
+    <!-- Prefix for Bug type change log -->
+    <string name="changelog_row_prefix_bug">[b]Bug:[/b]</string>
+
+    <!-- Prefix for Improvement type change log -->
+    <string name="changelog_row_prefix_improvement">[b]New:[/b]</string>
+```
+
+You can use the same html text markup described [above](#Html-text-markup).
+
+
 For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)

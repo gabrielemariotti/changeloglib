@@ -15,6 +15,10 @@
  ******************************************************************************/
 package it.gmariotti.changelibs.library.internal;
 
+import android.content.Context;
+
+import it.gmariotti.changelibs.R;
+
 /**
  * ChangeLogRow model
  *
@@ -22,40 +26,67 @@ package it.gmariotti.changelibs.library.internal;
  */
 public class ChangeLogRow {
 
-   /**
-    * Flag to indicate a header row
-    */
-   protected boolean header;
+    /**
+     * Default type
+     */
+    public static final int DEFAULT = 0;
 
-   /**
-    *  This corresponds to the android:versionName attribute in your manifest file. It is a required data
-    */
-   protected String versionName;
+    /**
+     * BugFix type
+     */
+    public static final int BUGFIX = 1;
 
-   /**
-    * Change data. It is optional
-    */
-   protected String changeDate;
+    /**
+     * Improvement type
+     */
+    public static final int IMPROVEMENT = 2;
 
-   //-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------
 
-   /**
-    *  Use a bulleted list. It overrides general flag. It is optional
-    */
-   private boolean bulletedList;
+    /**
+     * Flag to indicate a header row
+     */
+    protected boolean header;
 
-   /**
-    *  Special marker in change text. It is optional
-    *  TODO: not yet implemented
-    */
-   private String changeTextTitle;
+    /**
+     * This corresponds to the android:versionName attribute in your manifest file. It is a required data
+     */
+    protected String versionName;
 
-   /**
-    * Contains the actual text that will be displayed in your change log. It is required
-    */
-   private String changeText;
+    /**
+     * This corresponds to the android:versionCode attribute in your manifest file. It is an optional data.
+     */
+    protected String versionCode;
 
-   //-------------------------------------------------------------------------------------------------------------------
+    /**
+     * Change data. It is optional
+     */
+    protected String changeDate;
+
+    //-------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Use a bulleted list. It overrides general flag. It is optional
+     */
+    private boolean bulletedList;
+
+    /**
+     * Special marker in change text. It is optional
+     * TODO: not yet implemented
+     */
+    private String changeTextTitle;
+
+    /**
+     * Contains the actual text that will be displayed in your change log. It is required
+     */
+    private String changeText;
+
+    /**
+     * The type of change: bug, improvement, default.
+     */
+    private int type;
+
+    //-------------------------------------------------------------------------------------------------------------------
 
     /**
      * Replace special tags [b] [i]
@@ -63,22 +94,24 @@ public class ChangeLogRow {
      * @param changeLogText
      */
     public void parseChangeText(String changeLogText) {
-        if (changeLogText!=null){
-            changeLogText=changeLogText.replaceAll("\\[", "<").replaceAll("\\]",">");
+        if (changeLogText != null) {
+            changeLogText = changeLogText.replaceAll("\\[", "<").replaceAll("\\]", ">");
         }
         setChangeText(changeLogText);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb=new StringBuilder();
-        sb.append("header="+header);
+        StringBuilder sb = new StringBuilder();
+        sb.append("header=" + header);
         sb.append(",");
-        sb.append("versionName="+versionName);
+        sb.append("versionName=" + versionName);
         sb.append(",");
-        sb.append("bulletedList="+bulletedList);
+        sb.append("versionCode=" + versionCode);
         sb.append(",");
-        sb.append("changeText="+changeText);
+        sb.append("bulletedList=" + bulletedList);
+        sb.append(",");
+        sb.append("changeText=" + changeText);
         //sb.append(",");
         //sb.append("changeTextTitle="+changeTextTitle);
         return sb.toString();
@@ -87,7 +120,7 @@ public class ChangeLogRow {
     //-------------------------------------------------------------------------------------------------------------------
 
 
-   public boolean isHeader() {
+    public boolean isHeader() {
         return header;
     }
 
@@ -103,9 +136,26 @@ public class ChangeLogRow {
         this.bulletedList = bulletedList;
     }
 
-
     public String getChangeText() {
         return changeText;
+    }
+
+    public String getChangeText(Context context) {
+        if (context == null)
+            return getChangeText();
+
+        String prefix = "";
+        switch (type) {
+            case BUGFIX:
+                prefix = context.getResources().getString(R.string.changelog_row_prefix_bug);
+                prefix = prefix.replaceAll("\\[", "<").replaceAll("\\]", ">");
+                break;
+            case IMPROVEMENT:
+                prefix = context.getResources().getString(R.string.changelog_row_prefix_improvement);
+                prefix = prefix.replaceAll("\\[", "<").replaceAll("\\]", ">");
+                break;
+        }
+        return prefix + " " + changeText;
     }
 
     public void setChangeText(String changeText) {
@@ -118,6 +168,14 @@ public class ChangeLogRow {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
+    }
+
+    public String getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(String versionCode) {
+        this.versionCode = versionCode;
     }
 
     public String getChangeTextTitle() {
@@ -136,5 +194,8 @@ public class ChangeLogRow {
         this.changeDate = changeDate;
     }
 
+    public void setType(int type) {
+        this.type = type;
+    }
 
 }

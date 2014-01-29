@@ -7,10 +7,9 @@
         <changelogtext>[b]New![/b] Use DashClock with Android 4.2's Daydream feature;
             great for use with desktop docks!
         </changelogtext>
-        <changelogtext>[b]New![/b] Option to specify a manual location for weather
-        </changelogtext>
+        <changelogimprovement>Option to specify a manual location for weather</changelogimprovement>
         <changelogtext>Weather [i]extension[/i] now shows high/low information</changelogtext>
-        <changelogtext>Fixed a number of bugs with the Gmail and SMS extensions</changelogtext>
+        <changelogbug>Fixed a number of bugs with the Gmail and SMS extensions</changelogbug>
         <changelogtext>[b]For developers:[/b] New API features</changelogtext>
     </changelogversion>
 
