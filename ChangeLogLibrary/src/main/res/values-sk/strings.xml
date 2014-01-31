@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="changelog_internal_error_parsing">Chyba pri analýze súboru</string>
+    <string name="changelog_internal_error_internet_connection">Žiadne pripojenie k internetu pre získanie zoznamu zmien</string>
+    <string name="changelog_header_version">"Verzia "</string>
+    <string name="changelog_row_bulletpoint">\u2022"</string>
+    <string name="changelog_row_prefix_bug">[b]Chyba:[/b]</string>
+    <string name="changelog_row_prefix_improvement">[b]Nové:[/b]</string>
+
+</resources>
