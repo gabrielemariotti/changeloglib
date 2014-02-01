@@ -88,7 +88,7 @@ public class XmlParser extends BaseParser {
     private static final String ATTRIBUTE_VERSIONNAME="versionName";
     private static final String ATTRIBUTE_VERSIONCODE="versionCode";
     private static final String ATTRIBUTE_CHANGEDATE="changeDate";
-    private static final String ATTRIBUTE_CHANGETEXT="changeText";
+    //private static final String ATTRIBUTE_CHANGETEXT="changeText";
     private static final String ATTRIBUTE_CHANGETEXTTITLE= "changeTextTitle";
 
     private static List<String> mChangeLogTags = new ArrayList<String>() {{

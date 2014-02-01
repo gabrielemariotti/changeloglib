@@ -72,7 +72,7 @@ public class ChangeLogRow {
 
     /**
      * Special marker in change text. It is optional
-     * TODO: not yet implemented
+     * @deprecated use custom tags as changelogbug or changelogimprovement
      */
     private String changeTextTitle;
 
@@ -178,10 +178,16 @@ public class ChangeLogRow {
         this.versionCode = versionCode;
     }
 
+    /**
+     * @deprecated use custom tags as changelogbug or changelogimprovement
+     */
     public String getChangeTextTitle() {
         return changeTextTitle;
     }
 
+    /**
+     *  @deprecated use custom tags as changelogbug or changelogimprovement
+     */
     public void setChangeTextTitle(String changeTextTitle) {
         this.changeTextTitle = changeTextTitle;
     }
