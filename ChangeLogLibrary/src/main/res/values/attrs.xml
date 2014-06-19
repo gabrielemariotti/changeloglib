@@ -14,5 +14,11 @@
         <!-- Resource url for changelog.xml file. -->
         <attr name="changeLogFileResourceUrl" format="string" />
 
+        <!-- Minimum version code of change log. -->
+        <attr name="changeLogMinimumVersionCode" format="integer"/>
+
+        <!-- Number of change logs to show. -->
+        <attr name="changeLogMaximumNumber" format="integer" />
+
     </declare-styleable>
 </resources>
