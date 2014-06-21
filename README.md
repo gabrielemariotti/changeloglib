@@ -1,6 +1,7 @@
 # ChangeLog Library
 
 ChangeLog Library provides an easy way to display a change log in your Android app.
+
 Travis master: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=master)](https://travis-ci.org/gabrielemariotti/changeloglib)
 Travis dev: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=dev)](https://travis-ci.org/gabrielemariotti/changeloglib)
 
@@ -12,7 +13,7 @@ Travis dev: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib
 
 * **Sample** application: The demo is a showcase of the functionality of the library.
 
-	 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=it.gmariotti.changelibs.demo)
+	 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=it.gmariotti.changelog.demo)
 
 * Browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
 
@@ -83,7 +84,7 @@ See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.1'
     }
 
 [To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
