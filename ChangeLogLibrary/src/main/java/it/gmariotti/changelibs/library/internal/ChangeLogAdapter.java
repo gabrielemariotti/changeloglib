@@ -17,6 +17,7 @@ package it.gmariotti.changelibs.library.internal;
 
 import android.content.Context;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,6 +152,7 @@ public class ChangeLogAdapter extends ArrayAdapter<ChangeLogRow> {
                 if (item != null && viewHolder != null) {
                     if (viewHolder.text != null){
                         viewHolder.text.setText(Html.fromHtml(item.getChangeText(mContext)));
+                        viewHolder.text.setMovementMethod(LinkMovementMethod.getInstance());
                     }
                     if (viewHolder.bulletText!=null){
                         if (item.isBulletedList()){
