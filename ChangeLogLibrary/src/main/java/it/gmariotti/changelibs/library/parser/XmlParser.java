@@ -251,14 +251,22 @@ public class XmlParser extends BaseParser {
 
         // Read attributes
         String versionName = parser.getAttributeValue(null, ATTRIBUTE_VERSIONNAME);
-        String versionCode = parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE);
+        String versionCodeStr = parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE);
+        int versionCode = 0;
+        if (versionCodeStr != null){
+            try {
+                versionCode = Integer.parseInt(versionCodeStr);
+            }catch (NumberFormatException ne){
+                Log.w(TAG,"Error while parsing versionCode.It must be a numeric value. Check you file.");
+            }
+        }
         String changeDate= parser.getAttributeValue(null, ATTRIBUTE_CHANGEDATE);
         if (versionName==null)
             throw new ChangeLogException("VersionName required in changeLogVersion node");
 
         ChangeLogRowHeader row=new ChangeLogRowHeader();
         row.setVersionName(versionName);
-        row.setVersionCode(versionCode);
+        //row.setVersionCode(versionCode);
         row.setChangeDate(changeDate);
         changeLog.addRow(row);
 
@@ -285,7 +293,7 @@ public class XmlParser extends BaseParser {
      * @param changeLog
      * @throws Exception
      */
-    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,String versionCode) throws Exception {
+    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,int versionCode) throws Exception {
 
         if (parser == null) return;
 
