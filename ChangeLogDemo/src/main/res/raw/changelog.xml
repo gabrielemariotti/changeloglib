@@ -14,8 +14,8 @@
     </changelogversion>
 
     <changelogversion versionName="1.4.3" changeDate="March 25, 2013">
-        <changelogtext>[b]New![/b] Translations for Greek, Dutch and Brazilian
-            Portuguese
+        <changelogtext><![CDATA[<b><font color=red>New!</font></b> Translations for Greek,
+                Dutch and Brazilian Portuguese]]>
         </changelogtext>
         <changelogtext>Calendar extension now shows the current appointment if it started in the
             past 5 minutes

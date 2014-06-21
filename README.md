@@ -3,7 +3,7 @@
 ChangeLog Library provides an easy way to display a change log in your Android app.
 
 
-![Screen](https://github.com/gabrielemariotti/changeloglib/raw/master/ChangeLogDemo/images/screen.png)
+![Screen](/ChangeLogDemo/images/screen.png)
 
 
 ---
@@ -34,7 +34,7 @@ First, you need an XML layout that will contain the `ChangeLogListView` that dis
 ```
 
 Then, you need a XML file with change log in `res/raw` folder.
-It automatically searches for [`res/raw/changelog.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogLibrary/src/main/res/raw/changelog.xml) but you can customize filename.
+It automatically searches for [`res/raw/changelog.xml`](/ChangeLogLibrary/src/main/res/raw/changelog.xml) but you can customize filename.
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -60,17 +60,17 @@ Last, if you would like a multi language changelog, you just have to put the tra
 
 ## Examples
 
-For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)
+For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
 
 Try out:
 
-* the apk with the [sample application](https://github.com/gabrielemariotti/changeloglib/blob/master/apk/demo-1.4.0.apk?raw=true)
-* browse the [source code of the sample application](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo) for a complete example of use.
+* the apk with the [sample application](/apk/demo-1.4.0.apk?raw=true)
+* browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
 
 
 ## Customizations and tips
 
-See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md) for more information.
+See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 
 ---
 ## Including in your project
@@ -78,10 +78,10 @@ See the customisation [page:](https://github.com/gabrielemariotti/changeloglib/t
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.4.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.0'
     }
 
-[To build the library and demo locally you can see this page for more info](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/BUILD.md).
+[To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
 
 
 Credits

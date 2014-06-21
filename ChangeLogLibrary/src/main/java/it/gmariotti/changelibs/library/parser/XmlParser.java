@@ -31,6 +31,7 @@ import java.util.List;
 import it.gmariotti.changelibs.library.Constants;
 import it.gmariotti.changelibs.library.Util;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
+import it.gmariotti.changelibs.library.internal.ChangeLogAdapter;
 import it.gmariotti.changelibs.library.internal.ChangeLogException;
 import it.gmariotti.changelibs.library.internal.ChangeLogRow;
 import it.gmariotti.changelibs.library.internal.ChangeLogRowHeader;
@@ -73,6 +74,8 @@ public class XmlParser extends BaseParser {
     private static String TAG="XmlParser";
     private int mChangeLogFileResourceId= Constants.mChangeLogFileResourceId;
     private String mChangeLogFileResourceUrl= null;
+
+    protected ChangeLogAdapter mChangeLogAdapter;
 
     //--------------------------------------------------------------------------------
     //TAGs and ATTRIBUTEs in xml file
@@ -325,4 +328,8 @@ public class XmlParser extends BaseParser {
 
     }
 
+
+    public void setChangeLogAdapter(ChangeLogAdapter changeLogAdapter) {
+        mChangeLogAdapter = changeLogAdapter;
+    }
 }
