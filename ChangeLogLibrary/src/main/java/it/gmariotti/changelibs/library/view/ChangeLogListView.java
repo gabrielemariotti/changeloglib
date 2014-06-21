@@ -134,9 +134,9 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
             //Read and parse changelog.xml
             XmlParser parse;
             if (mChangeLogFileResourceUrl != null)
-                parse = new XmlParser(getContext(), mChangeLogFileResourceUrl);
+                parse = new XmlParser(getContext(), mChangeLogFileResourceUrl, mMinimumVersionCode, mMaximumNumberOfLogs);
             else
-                parse = new XmlParser(getContext(), mChangeLogFileResourceId);
+                parse = new XmlParser(getContext(), mChangeLogFileResourceId, mMinimumVersionCode, mMaximumNumberOfLogs);
             //ChangeLog chg=parse.readChangeLogFile();
             ChangeLog chg = new ChangeLog();
 

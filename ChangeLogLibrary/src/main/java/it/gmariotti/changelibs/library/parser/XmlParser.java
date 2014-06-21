@@ -73,6 +73,8 @@ public class XmlParser extends BaseParser {
     private static String TAG="XmlParser";
     private int mChangeLogFileResourceId= Constants.mChangeLogFileResourceId;
     private String mChangeLogFileResourceUrl= null;
+    private int mMinimumVersionCode=0;
+    private int mMaximumNumberOfLogs=Integer.MAX_VALUE;
 
     //--------------------------------------------------------------------------------
     //TAGs and ATTRIBUTEs in xml file
@@ -118,20 +120,25 @@ public class XmlParser extends BaseParser {
      * @param context  current Context
      * @param changeLogFileResourceId  reference for a custom xml file
      */
-    public XmlParser(Context context,int changeLogFileResourceId){
+    public XmlParser(Context context,int changeLogFileResourceId, int mMinimumVersionCode, int mMaximumNumberOfLogs){
         super(context);
         this.mChangeLogFileResourceId=changeLogFileResourceId;
+        this.mMinimumVersionCode = mMinimumVersionCode;
+        this.mMaximumNumberOfLogs = mMaximumNumberOfLogs;
     }
 
     /**
      * Create a new instance for a context and with a custom url .
-     *
-     * @param context  current Context
+     *  @param context  current Context
      * @param changeLogFileResourceUrl  url with xml files
+     * @param mMinimumVersionCode
+     * @param mMaximumNumberOfLogs
      */
-    public XmlParser(Context context,String changeLogFileResourceUrl){
+    public XmlParser(Context context, String changeLogFileResourceUrl, int mMinimumVersionCode, int mMaximumNumberOfLogs){
         super(context);
         this.mChangeLogFileResourceUrl=changeLogFileResourceUrl;
+        this.mMinimumVersionCode = mMinimumVersionCode;
+        this.mMaximumNumberOfLogs = mMaximumNumberOfLogs;
     }
 
     //--------------------------------------------------------------------------------
