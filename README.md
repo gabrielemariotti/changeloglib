@@ -58,6 +58,10 @@ It automatically searches for [`res/raw/changelog.xml`](https://github.com/gabri
 
 Last, if you would like a multi language changelog, you just have to put the translated files `changelog.xml` in the appropriate folders `res/raw-xx/`.
 
+### Showing limited number of entiries
+
+If you want to show only a specified number of entries in the changelog you have to options: Either add `changeLogMaximumNumber` parameter to the view in the layout and specify the number of entries to show or add `versionCode` attribute to the changelog.xml and add `changeLogMinimumVersionCode` to the view in the layout to indicate the minumum number of versionCode attribute to show.
+
 ## Examples
 
 For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)
