@@ -32,6 +32,7 @@ import java.util.List;
 import it.gmariotti.changelibs.library.Constants;
 import it.gmariotti.changelibs.library.Util;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
+import it.gmariotti.changelibs.library.internal.ChangeLogAdapter;
 import it.gmariotti.changelibs.library.internal.ChangeLogException;
 import it.gmariotti.changelibs.library.internal.ChangeLogRow;
 import it.gmariotti.changelibs.library.internal.ChangeLogRowHeader;
@@ -77,6 +78,8 @@ public class XmlParser extends BaseParser {
     private int mMinimumVersionCode = 0;
     private int mMaximumNumberOfLogs = Integer.MAX_VALUE;
 
+    protected ChangeLogAdapter mChangeLogAdapter;
+
     //--------------------------------------------------------------------------------
     //TAGs and ATTRIBUTEs in xml file
     //--------------------------------------------------------------------------------
@@ -87,12 +90,12 @@ public class XmlParser extends BaseParser {
     private static final String TAG_CHANGELOGBUG = "changelogbug";
     private static final String TAG_CHANGELOGIMPROVEMENT = "changelogimprovement";
 
-    private static final String ATTRIBUTE_BULLETEDLIST = "bulletedList";
-    private static final String ATTRIBUTE_VERSIONNAME = "versionName";
-    private static final String ATTRIBUTE_VERSIONCODE = "versionCode";
-    private static final String ATTRIBUTE_CHANGEDATE = "changeDate";
-    private static final String ATTRIBUTE_CHANGETEXT = "changeText";
-    private static final String ATTRIBUTE_CHANGETEXTTITLE = "changeTextTitle";
+    private static final String ATTRIBUTE_BULLETEDLIST="bulletedList";
+    private static final String ATTRIBUTE_VERSIONNAME="versionName";
+    private static final String ATTRIBUTE_VERSIONCODE="versionCode";
+    private static final String ATTRIBUTE_CHANGEDATE="changeDate";
+    //private static final String ATTRIBUTE_CHANGETEXT="changeText";
+    private static final String ATTRIBUTE_CHANGETEXTTITLE= "changeTextTitle";
 
     private static List<String> mChangeLogTags = new ArrayList<String>() {{
         add(TAG_CHANGELOGBUG);
@@ -344,4 +347,8 @@ public class XmlParser extends BaseParser {
 
     }
 
+
+    public void setChangeLogAdapter(ChangeLogAdapter changeLogAdapter) {
+        mChangeLogAdapter = changeLogAdapter;
+    }
 }

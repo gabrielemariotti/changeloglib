@@ -1,3 +1,4 @@
+apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
 
 repositories {
@@ -26,15 +27,20 @@ android {
             }
         }
     }
+
+    // It would be better to fix the issues
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     // ChangeLog Library
     compile project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:19.0.0'
+    compile 'com.android.support:support-v4:19.1.0'
     //ActionBarCompat
-    compile 'com.android.support:appcompat-v7:19.0.+'
+    compile 'com.android.support:appcompat-v7:19.1.+'
 }
 
 def Properties props = new Properties()

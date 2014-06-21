@@ -45,7 +45,7 @@ public class ChangeLogAdapter extends ArrayAdapter<ChangeLogRow> {
 
     private final Context mContext;
 
-    private boolean mChangeLogRowClickable = false;
+    //private boolean mChangeLogRowClickable = false;
 
     public ChangeLogAdapter(Context context,
                             List<ChangeLogRow> items) {

@@ -2,6 +2,18 @@
 
 There are many ways you can customize the changelog view.
 
+* [Custom Header Layout](#custom-header-layout)
+* [Custom Row Layout](#custom-row-layout)
+* [Custom ChangeLog XML](#custom-changeLog-xml)
+* [Bullet Point](#bullet-point)
+* [Html Text Markup](#html-text-markup)
+* [Customize Strings](#customize-strings)
+* [Use an url to download the changelog.xml file](#use-an-url-to-download-the-changelog.xml-file)
+* [Bug and improvement tags](#bug-and-improvement-tags)
+* [Emtpy view](#emtpy-view)
+
+
+
 ### Custom Header Layout
 
 Library uses `res/layout/changelogrowheader_layout.xml` XML layout for each header.<br/>
@@ -18,13 +30,13 @@ You can use your own xml layout with `chg:rowHeaderLayoutId` attribute in `Chang
     />
 ```
 
-The quickest way to start with this would be to copy the [`changelogrowheader_layout.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogLibrary/src/main/res/layout/changelogrowheader_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
+The quickest way to start with this would be to copy the [`changelogrowheader_layout.xml`](/ChangeLogLibrary/src/main/res/layout/changelogrowheader_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
 There's a specific set of views you need to have in your layout:
 
 1. A `TextView` with the ID `chg_headerVersion` that display the Version Number
 2. A `TextView` with the ID `chg_headerDate` that display the Version Date
 
-You can find an example in [`demo_changelogrowheader_layout.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/src/main/res/layout/demo_changelogrowheader_layout.xml)
+You can find an example in [`demo_changelogrowheader_layout.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelogrowheader_layout.xml)
 
 ### Custom Row Layout
 
@@ -48,7 +60,7 @@ There's a specific set of views you need to have in your layout:
 1. A `TextView` with the ID `chg_textbullet` that display the bullet point
 2. A `TextView` with the ID `chg_text` that display the actual text that will be displayed as a change in your List
 
-You can find an example in [`demo_changelogrow_layout.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/src/main/res/layout/demo_changelogrow_layout.xml)
+You can find an example in [`demo_changelogrow_layout.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelogrow_layout.xml)
 
 ### Custom ChangeLog XML
 
@@ -67,7 +79,7 @@ You can use your own file with `chg:changeLogFileResourceId` attribute in `Chang
     />
 ```
 
-You can find an example in [`demo_changelogrow_fragment_customlayout.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/src/main/res/layout/demo_changelog_fragment_customlayout.xml)
+You can find an example in [`demo_changelogrow_fragment_customlayout.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelog_fragment_customlayout.xml)
 
 ### Bullet Point
 The quickest way to customize this character is to specify this resource in your `strings.xml`.
@@ -103,7 +115,7 @@ You can use:
 2. `[i] text [/i]` for an <i>italic style</i>, or `&lt;b&gt; text &lt;/i&gt;`
 
 
-### Customize `Version` String
+### Customize Strings
 
 You can customize `Version` String in header.<br/>
 The quickest way to customize this character is to specify this resource in your `strings.xml`.
@@ -114,6 +126,7 @@ The quickest way to customize this character is to specify this resource in your
 
 Use string with quotes if you want a space.
 
+You can also customize other strings in the same way. See original `res/string.xml` in library.
 
 ### Use an url to download the changelog.xml file
 
@@ -166,4 +179,46 @@ You can customize the prefix text in your project overriding these values in str
 You can use the same html text markup described [above](#Html-text-markup).
 
 
-For more detailed information and examples you can read this [document:](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogDemo/README.md)
+### Empty view
+
+If you are using a large xml file, or you are using an url to download the changelog file, it would be nice to display an empty view until the list is ready.
+
+The `ChangeLogListView` extends a `ListView` and you can easy use the standard [`list.setEmptyView()`](http://developer.android.com/reference/android/widget/AdapterView.html#setEmptyView(android.view.View)) method to provide your custom view.
+
+For example:
+
+``` java
+
+        ChangeLogListView list = (ChangeLogListView) view.findViewById(R.id.myId);
+        View empty= (View) view.findViewById(R.id.my_empty_view);
+        list.setEmptyView(empty);
+
+```
+
+``` xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:chg="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <!-- Base Example -->
+    <view
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="it.gmariotti.changelibs.library.view.ChangeLogListView"
+            android:id="@+id/myId"
+            android:layout_gravity="center"
+            />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/my_empty_view"
+        android:gravity="center"
+        android:text="Loading data"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+```
+
+For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
