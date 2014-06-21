@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
     package="it.gmariotti.changelibs.demo">
 
     <uses-sdk
@@ -8,6 +9,7 @@
 
     <application
         android:allowBackup="true"
+        tools:replace="label"
         android:icon="@drawable/ic_launcher"
         android:label="@string/demo_changelog_app_name"
         android:theme="@style/AppTheme" >
