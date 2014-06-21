@@ -1,12 +1,26 @@
 # ChangeLog Library
 
 ChangeLog Library provides an easy way to display a change log in your Android app.
-
+Travis master: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=master)](https://travis-ci.org/gabrielemariotti/changeloglib)
+Travis dev: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=dev)](https://travis-ci.org/gabrielemariotti/changeloglib)
 
 ![Screen](/ChangeLogDemo/images/screen.png)
 
 
 ---
+## Examples
+
+* **Sample** application: The demo is a showcase of the functionality of the library.
+
+	 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=it.gmariotti.changelibs.demo)
+
+* Browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
+
+**If you would like, you can support my work, donating through the demo app.**
+
+For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
+
+
 ## Feature
 
 ChangeLog Library provides a custom `ListView` to display a change log through a xml file.
@@ -58,22 +72,13 @@ It automatically searches for [`res/raw/changelog.xml`](/ChangeLogLibrary/src/ma
 
 Last, if you would like a multi language changelog, you just have to put the translated files `changelog.xml` in the appropriate folders `res/raw-xx/`.
 
-## Examples
 
-For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
-
-Try out:
-
-* the apk with the [sample application](/apk/demo-1.4.0.apk?raw=true)
-* browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
-
-
-## Customizations and tips
+## Doc
 
 See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 
 ---
-## Including in your project
+## Quick Start
 
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
@@ -82,6 +87,11 @@ ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add t
     }
 
 [To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
+
+
+## ChangeLog
+
+* [Changelog:](CHANGELOG.md) A complete changelog
 
 
 Credits

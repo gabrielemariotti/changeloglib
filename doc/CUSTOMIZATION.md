@@ -114,6 +114,21 @@ You can use:
 1. `[b] text [/b]` for a <b>bold style</b>, or `&lt;b&gt; text &lt;/b&gt;`
 2. `[i] text [/i]` for an <i>italic style</i>, or `&lt;b&gt; text &lt;/i&gt;`
 
+If you need a hiperlink you can obtain it with:
+
+```xml
+    <changelogbug>Fixed a [a href="http://www.google.it"]number[/a] of bugs with the Gmail and SMS extensions</changelogbug>
+```
+
+Of course you can use standard android notation:
+
+```xml
+     <changelogimprovement><![CDATA[Option to specify a <a href="http://www.google.it">manual</a> location for weather]]></changelogimprovement>
+     <changelogtext><![CDATA[<b><font color=red>New!</font></b> Translations for Greek,
+                   Dutch and Brazilian Portuguese]]>
+     </changelogtext>
+```
+
 
 ### Customize Strings
 

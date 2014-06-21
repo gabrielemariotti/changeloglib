@@ -30,6 +30,7 @@ If you would like to build the demo you have to do these additional steps:
 
 - import the `ChangeLogDemo` code in your workspace starting from ChangeLogDemo folder.
 - mark java(*) folder as source
+- mark aidl(*) folder as source
 - add chgloglib as dependency ( right click -> Properties -> Android -> Add library)
 - add v7 appcompat library following [official guide](http://developer.android.com/tools/support-library/setup.html#libs-with-res)
 - add v7-library as dependency ( right click -> Properties -> Android -> Add library)

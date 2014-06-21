@@ -4,7 +4,8 @@ Change Log
 Version 1.5.0 *(2014-xx-xx)*
 ----------------------------
  * Added new changelogbug and changelogimprovement tags to use fixed prefix in changelog text [(doc)](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md#bug-and-improvement-tags)
- * Updated to gradle 1.10 and gradle-plugin 0.8
+ * Added a feature to make hyperlinks
+ * Updated to gradle 1.12 and gradle-plugin 0.11
 
 
 Version 1.4.0 *(2013-11-19)*
