@@ -16,13 +16,10 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 import android.text.TextUtils;
 import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 import java.security.InvalidKeyException;

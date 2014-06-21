@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 import android.app.Activity;
 import android.app.PendingIntent;

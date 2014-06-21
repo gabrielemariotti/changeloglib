@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 /**
  * Represents the result of an in-app billing operation.

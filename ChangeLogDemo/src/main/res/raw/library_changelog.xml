@@ -2,7 +2,7 @@
 <changelog bulletedList="true">
 
     <!-- It is the real library changelog.xml -->
-    <changelogversion versionName="1.5" changeDate="20/06/2014">
+    <changelogversion versionName="1.5.1" changeDate="20/06/2014">
         <changelogtext>[b]Added[/b] new changelogbug and changelogimprovement tags to use fixed prefix in changelog text </changelogtext>
         <changelogtext>[b]Added[/b] Added a feature to make hyperlinks</changelogtext>
         <changelogtext>Moved to gradle 1.12 and gradle-plugin 0.11.x</changelogtext>

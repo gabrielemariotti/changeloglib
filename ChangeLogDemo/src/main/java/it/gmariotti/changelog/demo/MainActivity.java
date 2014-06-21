@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo;
+package it.gmariotti.changelog.demo;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,16 +35,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import it.gmariotti.changelibs.demo.fragment.BaseFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomLayoutFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomLayoutRowFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomXmlFileFragment;
-import it.gmariotti.changelibs.demo.fragment.DialogStandardFragment;
-import it.gmariotti.changelibs.demo.fragment.StandardFragment;
-import it.gmariotti.changelibs.demo.fragment.WithoutBulletPointFragment;
-import it.gmariotti.changelibs.demo.iabutils.IabHelper;
-import it.gmariotti.changelibs.demo.iabutils.IabResult;
-import it.gmariotti.changelibs.demo.iabutils.IabUtil;
+import it.gmariotti.changelog.demo.fragment.BaseFragment;
+import it.gmariotti.changelog.demo.fragment.CustomLayoutFragment;
+import it.gmariotti.changelog.demo.fragment.CustomLayoutRowFragment;
+import it.gmariotti.changelog.demo.fragment.CustomXmlFileFragment;
+import it.gmariotti.changelog.demo.fragment.DialogStandardFragment;
+import it.gmariotti.changelog.demo.fragment.StandardFragment;
+import it.gmariotti.changelog.demo.fragment.WithoutBulletPointFragment;
+import it.gmariotti.changelog.demo.iabutils.IabHelper;
+import it.gmariotti.changelog.demo.iabutils.IabResult;
+import it.gmariotti.changelog.demo.iabutils.IabUtil;
+
 
 /**
  *  Main Activity

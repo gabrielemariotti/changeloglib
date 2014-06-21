@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 // This code was converted from code at http://iharder.sourceforge.net/base64/
 // Lots of extraneous features were removed.

@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

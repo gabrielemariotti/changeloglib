@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 /**
  * Exception thrown when encountering an invalid Base64 input character.

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- String for Version Header -->
-    <string name="changelog_header_version">"Versione "</string>
-
-</resources>

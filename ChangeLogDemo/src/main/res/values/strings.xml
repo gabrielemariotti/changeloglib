@@ -5,14 +5,15 @@
     <string name="demo_changelog_app_name">ChangeLib Demo</string>
 
     <!-- About -->
-    <string name="title_about">About</string>
+    <string name="title_about"><![CDATA[
+            <b>ChangeLog Library</b>&nbsp;<font color="#888888">v%1$s</font>
+        ]]></string>
     <string name="about_ok">OK</string>
     <string name="about_body"><![CDATA[
         <b>ChangeLog Library & Demo</b><br>
-        Version %s<br><br>
-        <a href="https://github.com/gabrielemariotti/changelib">Source</a><br><br>
-        <a href="https://plus.google.com/114432517923423045208">By Gabriele Mariotti</a><br><br>
-
+        Author: <a href="https://plus.google.com/114432517923423045208">Gabriele Mariotti</a><br>
+        <br>
+        Get: <a href="https://github.com/gabrielemariotti/changeloglib">Source and doc</a><br>
     ]]></string>
 
     <!-- Menu -->

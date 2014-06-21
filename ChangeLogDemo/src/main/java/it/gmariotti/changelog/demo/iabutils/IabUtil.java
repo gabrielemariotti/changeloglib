@@ -16,7 +16,7 @@
  *  *****************************************************************************
  */
 
-package it.gmariotti.changelibs.demo.iabutils;
+package it.gmariotti.changelog.demo.iabutils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -39,8 +39,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import it.gmariotti.changelibs.demo.MainActivity;
-import it.gmariotti.changelibs.demo.R;
+import it.gmariotti.changelog.demo.MainActivity;
+import it.gmariotti.changelog.demo.R;
 
 
 /**
@@ -48,7 +48,7 @@ import it.gmariotti.changelibs.demo.R;
  */
 public class IabUtil {
 
-    public static String key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmhhk6JrVRrRapQJ/SnOau1A+lu1Hf/YCgd8sO69dw+j2SoIMDxr5XNLmaNTaanGs0Z5FMSLX3GK9P1q5zOvxr+9wgLgpK7vqRDYC2x0r1f+PaCm5ffXxU0ryA3+fxrei170cQA5edipdTmFEaW3rOjNTqVkrNyOn3nc0th0NhrNxiiV30kC8A95YNF+fVz45MzRCer79ok8u/m9pitqyxy5wykzyWQeZQmwlAlCjf3P8GVYjelOFK1HLMBz5nISosQ1VRRjfklUfN6WNZDuIdgdq7f+61xFyZ8nzdYNFJ9lH+hXXt/sw0nLFmsjr1dYLhI1Gwm13RwN6wXpzLfl6aQIDAQAB";
+    public static String key = "MY_KEY";
 
     public static String SMALL_BEER_SKU = "small_beer";
     public static String MEDIUM_BEER_SKU = "medium_beer";

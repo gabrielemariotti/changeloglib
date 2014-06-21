@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo.fragment;
+package it.gmariotti.changelog.demo.fragment;
 
 
 import android.os.Bundle;
@@ -21,7 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import it.gmariotti.changelibs.demo.R;
+import it.gmariotti.changelog.demo.R;
+
 
 /**
  * ChangeLog Example with custom xml file without bullet point.

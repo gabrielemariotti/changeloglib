@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo;
+package it.gmariotti.changelog.demo;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
-import it.gmariotti.changelibs.demo.fragment.BaseFragment;
+import it.gmariotti.changelog.demo.fragment.BaseFragment;
 import it.gmariotti.changelibs.library.internal.ChangeLog;
 import it.gmariotti.changelibs.library.parser.XmlParser;
 

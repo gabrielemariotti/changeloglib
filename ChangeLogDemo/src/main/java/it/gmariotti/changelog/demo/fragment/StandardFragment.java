@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo.fragment;
+package it.gmariotti.changelog.demo.fragment;
 
 
 import android.os.Bundle;
@@ -21,37 +21,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import it.gmariotti.changelibs.demo.R;
+import it.gmariotti.changelog.demo.R;
+
 
 /**
- * ChangeLog Example with custom layout file for header.
- *
- * Example:
- *
- * <pre>
- *      <!-- Custom layout file Example -->
- *      <view
- *         android:layout_width="match_parent"
- *         android:layout_height="match_parent"
- *         class="it.gmariotti.changelibs.library.view.ChangeLogListView"
- *         android:id="@+id/view"
- *         android:layout_gravity="center"
- *          chg:rowHeaderLayoutId="@layout/@layout/demo_changelogrowheader_layout"
- *         />
- * </pre>
+ * ChangeLog Example with standard library.
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public class CustomLayoutFragment extends BaseFragment {
+public class StandardFragment extends BaseFragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.demo_changelog_fragment_customlayout, container, false);
+        return inflater.inflate(R.layout.demo_changelog_fragment_standard, container, false);
     }
 
     @Override
     public int getTitleResourceId() {
-        return R.string.demo_changelog_title_customlayout;
+        return R.string.demo_changelog_title_standard;
     }
 }
