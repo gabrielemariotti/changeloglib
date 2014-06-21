@@ -255,7 +255,7 @@ public class XmlParser extends BaseParser {
 
         // Read attributes
         String versionName = parser.getAttributeValue(null, ATTRIBUTE_VERSIONNAME);
-        String versionCode = parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE);
+        int versionCode = Integer.parseInt(parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE));
         String changeDate= parser.getAttributeValue(null, ATTRIBUTE_CHANGEDATE);
         if (versionName==null)
             throw new ChangeLogException("VersionName required in changeLogVersion node");
@@ -289,7 +289,7 @@ public class XmlParser extends BaseParser {
      * @param changeLog
      * @throws Exception
      */
-    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,String versionCode) throws Exception {
+    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,int versionCode) throws Exception {
 
         if (parser == null) return;
 

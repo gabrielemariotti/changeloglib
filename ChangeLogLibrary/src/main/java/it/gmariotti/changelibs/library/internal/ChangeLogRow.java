@@ -56,7 +56,7 @@ public class ChangeLogRow {
     /**
      * This corresponds to the android:versionCode attribute in your manifest file. It is an optional data.
      */
-    protected String versionCode;
+    protected int versionCode;
 
     /**
      * Change data. It is optional
@@ -170,11 +170,11 @@ public class ChangeLogRow {
         this.versionName = versionName;
     }
 
-    public String getVersionCode() {
+    public int getVersionCode() {
         return versionCode;
     }
 
-    public void setVersionCode(String versionCode) {
+    public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
     }
 
