@@ -1,0 +1,26 @@
+language: android
+android:
+  components:
+    - build-tools-19.1.0
+
+branches:
+  only:
+    - dev
+    - master
+
+notifications:
+  email: false
+
+before_install:
+
+  # for gradle output style
+  - export TERM=dumb
+
+  # environment info
+  - ./gradlew -v
+  - uname -a
+
+# Let's try to build...
+#install: ./gradlew clean build
+
+script: ./gradlew clean build
