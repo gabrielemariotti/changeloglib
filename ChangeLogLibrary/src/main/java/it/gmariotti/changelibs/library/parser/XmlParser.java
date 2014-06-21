@@ -190,9 +190,6 @@ public class XmlParser extends BaseParser {
             throw ioe;
         }
 
-        if (chg!=null)
-            Log.d(TAG,"Process ended. ChangeLog:"+chg.toString());
-
         return chg;
     }
 
@@ -209,7 +206,7 @@ public class XmlParser extends BaseParser {
 
         // Parse changelog node
         parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOG);
-        Log.d(TAG,"Processing main tag=");
+        //Log.d(TAG,"Processing main tag=");
 
         // Read attributes
         String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
@@ -228,7 +225,7 @@ public class XmlParser extends BaseParser {
             }
 
             String tag = parser.getName();
-            Log.d(TAG,"Processing tag="+tag);
+            //Log.d(TAG,"Processing tag="+tag);
 
             if (tag.equals(TAG_CHANGELOGVERSION)) {
                 readChangeLogVersionNode(parser, changeLog);
@@ -270,7 +267,7 @@ public class XmlParser extends BaseParser {
         row.setChangeDate(changeDate);
         changeLog.addRow(row);
 
-        Log.d(TAG,"Added rowHeader:"+row.toString());
+        //Log.d(TAG,"Added rowHeader:"+row.toString());
 
         // Parse nested nodes
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -278,7 +275,7 @@ public class XmlParser extends BaseParser {
                 continue;
             }
             String tag = parser.getName();
-            Log.d(TAG,"Processing tag="+tag);
+            //Log.d(TAG,"Processing tag="+tag);
 
             if (mChangeLogTags.contains(tag)){
                 readChangeLogRowNode(parser, changeLog,versionName,versionCode);
@@ -332,7 +329,7 @@ public class XmlParser extends BaseParser {
         }
         changeLog.addRow(row);
 
-        Log.d(TAG, "Added row:" + row.toString());
+        //Log.d(TAG, "Added row:" + row.toString());
 
     }
 
