@@ -3,13 +3,14 @@
           xmlns:tools="http://schemas.android.com/tools"
     package="it.gmariotti.changelibs.demo">
 
+    <uses-permission android:name="com.android.vending.BILLING" />
+
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
-        tools:replace="label"
         android:icon="@drawable/ic_launcher"
         android:label="@string/demo_changelog_app_name"
         android:theme="@style/AppTheme" >

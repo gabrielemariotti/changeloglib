@@ -2,7 +2,7 @@
 
 There are some usage examples.
 
-See the **customization and tips** [page:](/CUSTOMIZATION.md) for more information.
+See the **customization and tips** [page:](/doc/CUSTOMIZATION.md) for more information.
 
 ## Standard Example
 
