@@ -10,7 +10,7 @@ You can add this library to your project adding a dependency to your `build.grad
 Card Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.1'
     }
 
 
@@ -30,6 +30,7 @@ If you would like to build the demo you have to do these additional steps:
 
 - import the `ChangeLogDemo` code in your workspace starting from ChangeLogDemo folder.
 - mark java(*) folder as source
+- mark aidl(*) folder as source
 - add chgloglib as dependency ( right click -> Properties -> Android -> Add library)
 - add v7 appcompat library following [official guide](http://developer.android.com/tools/support-library/setup.html#libs-with-res)
 - add v7-library as dependency ( right click -> Properties -> Android -> Add library)

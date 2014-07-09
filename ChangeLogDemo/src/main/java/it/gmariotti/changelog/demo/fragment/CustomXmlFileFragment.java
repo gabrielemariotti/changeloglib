@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo.fragment;
+package it.gmariotti.changelog.demo.fragment;
 
 
 import android.os.Bundle;
@@ -21,23 +21,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import it.gmariotti.changelibs.demo.R;
+import it.gmariotti.changelog.demo.R;
+
 
 /**
- * ChangeLog Example with standard library.
+ * ChangeLog Example with custom xml file.
+ *
+ * If you want to specify a custom xml file for changes, you can use
+ * chg:changeLogFileResourceId attribute in your view layout.
+ * Example:
+ *
+ * <pre>
+ * <!-- Custom xml file Example -->
+ *      <view
+ *         android:layout_width="match_parent"
+ *         android:layout_height="match_parent"
+ *         class="it.gmariotti.changelibs.library.view.ChangeLogListView"
+ *         android:id="@+id/view"
+ *         android:layout_gravity="center"
+ *         chg:changeLogFileResourceId="@raw/custom_changelog"
+ *         />
+ * </pre>
  *
  * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public class StandardFragment extends BaseFragment {
+public class CustomXmlFileFragment extends BaseFragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.demo_changelog_fragment_standard, container, false);
+        return inflater.inflate(R.layout.demo_changelog_fragment_customxmlfile, container, false);
     }
 
     @Override
     public int getTitleResourceId() {
-        return R.string.demo_changelog_title_standard;
+        return R.string.demo_changelog_title_customexml;
     }
 }

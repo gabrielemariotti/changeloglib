@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo;
+package it.gmariotti.changelog.demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -25,6 +26,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,13 +35,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import it.gmariotti.changelibs.demo.fragment.BaseFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomLayoutFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomLayoutRowFragment;
-import it.gmariotti.changelibs.demo.fragment.CustomXmlFileFragment;
-import it.gmariotti.changelibs.demo.fragment.DialogStandardFragment;
-import it.gmariotti.changelibs.demo.fragment.StandardFragment;
-import it.gmariotti.changelibs.demo.fragment.WithoutBulletPointFragment;
+import it.gmariotti.changelog.demo.fragment.BaseFragment;
+import it.gmariotti.changelog.demo.fragment.CustomLayoutFragment;
+import it.gmariotti.changelog.demo.fragment.CustomLayoutRowFragment;
+import it.gmariotti.changelog.demo.fragment.CustomXmlFileFragment;
+import it.gmariotti.changelog.demo.fragment.DialogStandardFragment;
+import it.gmariotti.changelog.demo.fragment.StandardFragment;
+import it.gmariotti.changelog.demo.fragment.WithoutBulletPointFragment;
+import it.gmariotti.changelog.demo.iabutils.IabHelper;
+import it.gmariotti.changelog.demo.iabutils.IabResult;
+import it.gmariotti.changelog.demo.iabutils.IabUtil;
+
 
 /**
  *  Main Activity
@@ -53,6 +59,10 @@ public class MainActivity extends ActionBarActivity {
     private CustomActionBarDrawerToggle mDrawerToggle;
     private int mCurrentTitle;
     private int mSelectedFragment;
+
+    private IabHelper mHelper;
+
+    private static String TAG= "MainActivity";
 
     //Used in savedInstanceState
     private static String BUNDLE_SELECTEDFRAGMENT="BDL_SELFRG";
@@ -88,6 +98,29 @@ public class MainActivity extends ActionBarActivity {
         _initMenu();
         mDrawerToggle = new CustomActionBarDrawerToggle(this, mDrawer);
         mDrawer.setDrawerListener(mDrawerToggle);
+        // ---------------------------------------------------------------
+        // ...
+        String base64EncodedPublicKey= IabUtil.key;
+
+        // compute your public key and store it in base64EncodedPublicKey
+        mHelper = new IabHelper(this, base64EncodedPublicKey);
+        mHelper.enableDebugLogging(true);
+
+        mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
+            public void onIabSetupFinished(IabResult result) {
+                if (!result.isSuccess()) {
+                    // Oh noes, there was a problem.
+                    Log.d(TAG, "Problem setting up In-app Billing: " + result);
+                    return;
+                }
+
+                // Have we been disposed of in the meantime? If so, quit.
+                if (mHelper == null) return;
+
+                // Hooray, IAB is fully set up!
+                IabUtil.getInstance().retrieveData(mHelper);
+            }
+        });
 
         //-----------------------------------------------------------------
         BaseFragment baseFragment=null;
@@ -100,6 +133,13 @@ public class MainActivity extends ActionBarActivity {
         if (baseFragment!=null)
             openFragment(baseFragment);
         //-----------------------------------------------------------------
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mHelper != null) mHelper.dispose();
+        mHelper = null;
     }
 
     @Override
@@ -149,6 +189,10 @@ public class MainActivity extends ActionBarActivity {
             //Real library changelog
             case R.id.menu_changelog:
                 Utils.showChangeLog(this);
+                return true;
+
+            case R.id.menu_beer:
+                IabUtil.showBeer(this, mHelper);
                 return true;
         }
 
@@ -281,5 +325,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult(" + requestCode + "," + resultCode + "," + data);
+
+        // Pass on the activity result to the helper for handling
+        if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            // not handled, so handle it ourselves (here's where you'd
+            // perform any handling of activity results not related to in-app
+            // billing...
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+        else {
+            Log.d(TAG, "onActivityResult handled by IABUtil.");
+        }
+    }
+
+    public IabHelper getHelper() {
+        return mHelper;
+    }
+
 
 }

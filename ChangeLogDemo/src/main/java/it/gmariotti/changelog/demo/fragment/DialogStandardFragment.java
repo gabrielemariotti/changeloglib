@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package it.gmariotti.changelibs.demo.fragment;
+package it.gmariotti.changelog.demo.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,8 +23,9 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 
-import it.gmariotti.changelibs.demo.R;
 import it.gmariotti.changelibs.library.view.ChangeLogListView;
+import it.gmariotti.changelog.demo.R;
+
 
 /**
  * Example with Dialog

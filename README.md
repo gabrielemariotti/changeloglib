@@ -2,11 +2,26 @@
 
 ChangeLog Library provides an easy way to display a change log in your Android app.
 
+Travis master: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=master)](https://travis-ci.org/gabrielemariotti/changeloglib)
+Travis dev: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib.svg?branch=dev)](https://travis-ci.org/gabrielemariotti/changeloglib)
 
 ![Screen](/ChangeLogDemo/images/screen.png)
 
 
 ---
+## Examples
+
+* **Sample** application: The demo is a showcase of the functionality of the library.
+
+	 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=it.gmariotti.changelog.demo)
+
+* Browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
+
+**If you would like, you can support my work, donating through the demo app.**
+
+For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
+
+
 ## Feature
 
 ChangeLog Library provides a custom `ListView` to display a change log through a xml file.
@@ -58,34 +73,26 @@ It automatically searches for [`res/raw/changelog.xml`](/ChangeLogLibrary/src/ma
 
 Last, if you would like a multi language changelog, you just have to put the translated files `changelog.xml` in the appropriate folders `res/raw-xx/`.
 
-### Showing limited number of entiries
 
-If you want to show only a specified number of entries in the changelog you have to options: Either add `changeLogMaximumNumber` parameter to the view in the layout and specify the number of entries to show or add `versionCode` attribute to the changelog.xml and add `changeLogMinimumVersionCode` to the view in the layout to indicate the minumum number of versionCode attribute to show.
-
-## Examples
-
-For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
-
-Try out:
-
-* the apk with the [sample application](/apk/demo-1.4.0.apk?raw=true)
-* browse the [source code of the sample application](/ChangeLogDemo) for a complete example of use.
-
-
-## Customizations and tips
+## Doc
 
 See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 
 ---
-## Including in your project
+## Quick Start
 
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.0'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.1'
     }
 
 [To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
+
+
+## ChangeLog
+
+* [Changelog:](CHANGELOG.md) A complete changelog
 
 
 Credits

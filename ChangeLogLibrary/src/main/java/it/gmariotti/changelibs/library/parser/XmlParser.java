@@ -198,9 +198,6 @@ public class XmlParser extends BaseParser {
             throw ioe;
         }
 
-        if (chg != null)
-            Log.d(TAG, "Process ended. ChangeLog:" + chg.toString());
-
         return chg;
     }
 
@@ -216,8 +213,8 @@ public class XmlParser extends BaseParser {
         if (parser == null || changeLog == null) return;
 
         // Parse changelog node
-        parser.require(XmlPullParser.START_TAG, null, TAG_CHANGELOG);
-        Log.d(TAG, "Processing main tag=");
+        parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOG);
+        //Log.d(TAG,"Processing main tag=");
 
         // Read attributes
         String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
@@ -236,7 +233,7 @@ public class XmlParser extends BaseParser {
             }
 
             String tag = parser.getName();
-            Log.d(TAG, "Processing tag=" + tag);
+            //Log.d(TAG,"Processing tag="+tag);
 
             if (tag.equals(TAG_CHANGELOGVERSION)) {
                 readChangeLogVersionNode(parser, changeLog);
@@ -259,15 +256,15 @@ public class XmlParser extends BaseParser {
 
         // Read attributes
         String versionName = parser.getAttributeValue(null, ATTRIBUTE_VERSIONNAME);
-        String versionCodeAttributeValue = parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE);
-        int versionCode;
-
-        if (TextUtils.isEmpty(versionCodeAttributeValue)) {
-            versionCode = 0;
-        } else {
-            versionCode = TextUtils.isDigitsOnly(versionCodeAttributeValue) ? Integer.parseInt(versionCodeAttributeValue) : 0;
+        String versionCodeStr = parser.getAttributeValue(null, ATTRIBUTE_VERSIONCODE);
+        int versionCode = 0;
+        if (versionCodeStr != null){
+            try {
+                versionCode = Integer.parseInt(versionCodeStr);
+            }catch (NumberFormatException ne){
+                Log.w(TAG,"Error while parsing versionCode.It must be a numeric value. Check you file.");
+            }
         }
-
         if (versionCode < mMinimumVersionCode) return;
         if (changeLog.getHeaderRowCount() == mMaximumNumberOfLogs) return;
 
@@ -275,13 +272,13 @@ public class XmlParser extends BaseParser {
         if (versionName == null)
             throw new ChangeLogException("VersionName required in changeLogVersion node");
 
-        ChangeLogRowHeader row = new ChangeLogRowHeader();
+        ChangeLogRowHeader row=new ChangeLogRowHeader();
         row.setVersionName(versionName);
         row.setVersionCode(versionCode);
         row.setChangeDate(changeDate);
         changeLog.addRow(row);
 
-        Log.d(TAG, "Added rowHeader:" + row.toString());
+        //Log.d(TAG,"Added rowHeader:"+row.toString());
 
         // Parse nested nodes
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -304,7 +301,7 @@ public class XmlParser extends BaseParser {
      * @param changeLog
      * @throws Exception
      */
-    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName, int versionCode) throws Exception {
+    private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,int versionCode) throws Exception {
 
         if (parser == null) return;
 
@@ -343,7 +340,7 @@ public class XmlParser extends BaseParser {
         }
         changeLog.addRow(row);
 
-        Log.d(TAG, "Added row:" + row.toString());
+        //Log.d(TAG, "Added row:" + row.toString());
 
     }
 

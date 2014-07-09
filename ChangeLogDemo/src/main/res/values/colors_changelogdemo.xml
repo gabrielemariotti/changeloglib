@@ -19,4 +19,9 @@
 
 <resources>
     <color name="pressed_changelog">#CC8AB6E7</color>
+
+    <!-- Purchase -->
+    <color name="demo_purchase_normal">#ececec</color>
+    <color name="demo_purchase_pressed">#CC2A84A5</color>
+
 </resources>
