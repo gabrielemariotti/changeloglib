@@ -332,21 +332,21 @@ public class MainActivity extends ActionBarActivity {
                     mDeferredOnDrawerClosedRunnable = null;
                 }
 
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 updateStatusBarForNavDrawerSlide(0f);
                 onNavDrawerStateChanged(false, false);
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 updateStatusBarForNavDrawerSlide(1f);
                 onNavDrawerStateChanged(true, false);
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                invalidateOptionsMenu();
+                supportInvalidateOptionsMenu();
                 onNavDrawerStateChanged(isNavDrawerOpen(), newState != DrawerLayout.STATE_IDLE);
             }
 
