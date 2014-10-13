@@ -46,6 +46,8 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.0'
     //ActionBarCompat
     compile 'com.android.support:appcompat-v7:20.0.0'
+    //To test layout
+    compile 'org.lucasr.dspec:dspec:0.1.1'
 }
 
 def Properties props = new Properties()
