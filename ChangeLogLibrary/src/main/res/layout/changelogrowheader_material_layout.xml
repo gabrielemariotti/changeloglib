@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/chg_rowheader"
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:paddingLeft="@dimen/chglib_material_keyline1"
+              android:paddingRight="@dimen/chglib_material_keyline1"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
+
+
+    <!-- ChangeLog Header [Version] You have to use the id="chg_headerVersion" -->
+    <TextView
+            android:id="@+id/chg_headerVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/chglib_material_keyline1"
+            android:paddingBottom="@dimen/chglib_material_keyline1"
+            android:gravity="center_vertical"
+            style="?android:attr/listSeparatorTextViewStyle"
+            tools:text="VERSION 1.5"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/chglib_material_color_text_1"
+            android:fontFamily="@string/font_fontFamily_material_item"
+            android:textSize="@dimen/chglib_material_list_suheader_fontsize"
+        />
+
+    <!-- ChangeLog Header [Date] You have to use the id="chg_headerDate" -->
+    <TextView
+            android:id="@+id/chg_headerDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/chglib_material_keyline1"
+            android:paddingBottom="@dimen/chglib_material_keyline1"
+            android:gravity="center_vertical"
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:text="JUNE 17,2013"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/chglib_material_color_text_1"
+            android:fontFamily="@string/font_fontFamily_material_item"
+            android:textSize="@dimen/chglib_material_list_suheader_fontsize"/>
+
+
+</LinearLayout>
