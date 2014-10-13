@@ -1,5 +1,5 @@
 apply plugin: 'android-sdk-manager'
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
@@ -26,6 +26,11 @@ android {
                 signingConfig signingConfigs.release
             }
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
     }
 
     // It would be better to fix the issues
@@ -38,9 +43,9 @@ dependencies {
     // ChangeLog Library
     compile project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.android.support:support-v4:20.0.0'
     //ActionBarCompat
-    compile 'com.android.support:appcompat-v7:19.1.+'
+    compile 'com.android.support:appcompat-v7:20.0.0'
 }
 
 def Properties props = new Properties()
