@@ -1,0 +1,20 @@
+{
+    "baselineGridVisible": false,
+    "baselineGridCellSize": 8,
+    "keylinesColor": "#BB11f85B",
+    "spacingsColor": "#2000A1A1",
+    "keylines": [
+        { "offset": 16,
+          "from": "TOP" },
+        { "offset": 16,
+          "from": "BOTTOM" },
+    ],
+    "spacings": [
+        { "offset": 0,
+          "size": 16,
+          "from": "TOP" },
+        { "offset": 0,
+          "size": -16,
+          "from": "BOTTOM" }
+    ]
+}
