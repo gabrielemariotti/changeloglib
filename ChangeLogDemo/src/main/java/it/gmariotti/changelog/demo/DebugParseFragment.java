@@ -57,6 +57,11 @@ public class DebugParseFragment extends BaseFragment {
     }
 
     @Override
+    public int getSelfNavDrawerItem() {
+        return 0;
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 

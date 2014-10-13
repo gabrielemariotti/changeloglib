@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import it.gmariotti.changelog.demo.MainActivity;
 import it.gmariotti.changelog.demo.R;
 
 
@@ -56,5 +57,10 @@ public class CustomXmlFileFragment extends BaseFragment {
     @Override
     public int getTitleResourceId() {
         return R.string.demo_changelog_title_customexml;
+    }
+
+    @Override
+    public int getSelfNavDrawerItem() {
+        return MainActivity.NAVDRAWER_ITEM_CUSTOM_XML;
     }
 }

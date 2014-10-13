@@ -15,36 +15,41 @@
  ******************************************************************************/
 package it.gmariotti.changelog.demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.os.Handler;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import it.gmariotti.changelog.demo.fragment.BaseFragment;
 import it.gmariotti.changelog.demo.fragment.CustomLayoutFragment;
 import it.gmariotti.changelog.demo.fragment.CustomLayoutRowFragment;
 import it.gmariotti.changelog.demo.fragment.CustomXmlFileFragment;
-import it.gmariotti.changelog.demo.fragment.DialogStandardFragment;
+import it.gmariotti.changelog.demo.fragment.DialogMaterialFragment;
+import it.gmariotti.changelog.demo.fragment.MaterialFragment;
 import it.gmariotti.changelog.demo.fragment.StandardFragment;
 import it.gmariotti.changelog.demo.fragment.WithoutBulletPointFragment;
 import it.gmariotti.changelog.demo.iabutils.IabHelper;
 import it.gmariotti.changelog.demo.iabutils.IabResult;
 import it.gmariotti.changelog.demo.iabutils.IabUtil;
+import it.gmariotti.changelog.demo.utils.PrefUtils;
+import it.gmariotti.changelog.demo.utils.UtilsBase;
 
 
 /**
@@ -54,31 +59,86 @@ import it.gmariotti.changelog.demo.iabutils.IabUtil;
  */
 public class MainActivity extends ActionBarActivity {
 
-    private ListView mDrawerList;
-    private DrawerLayout mDrawer;
-    private CustomActionBarDrawerToggle mDrawerToggle;
-    private int mCurrentTitle;
-    private int mSelectedFragment;
+
+    private UtilsBase mUtils;
+
+    // list of navdrawer items that were actually added to the navdrawer, in order
+    private ArrayList<Integer> mNavDrawerItems = new ArrayList<Integer>();
+
+    // symbols for navdrawer items (indices must correspond to array below). This is
+    // not a list of items that are necessarily *present* in the Nav Drawer; rather,
+    // it's a list of all possible items.
+
+    public static final int NAVDRAWER_ITEM_STD = 0;
+    public static final int NAVDRAWER_ITEM_MAT = 1;
+    public static final int NAVDRAWER_ITEM_DIALOG = 2;
+    public static final int NAVDRAWER_ITEM_WITHOUT_BULLET = 3;
+    public static final int NAVDRAWER_ITEM_CUSTOM_XML = 4;
+    public static final int NAVDRAWER_ITEM_CUSTOM_HEADER = 5;
+    public static final int NAVDRAWER_ITEM_CUSTOM_ROW = 6;
+
+    public static final int NAVDRAWER_ITEM_GITHUB = 7;
+    public static final int NAVDRAWER_ITEM_DONATE = 8;
+    public static final int NAVDRAWER_ITEM_INFO = 9;
+
+    protected static final int NAVDRAWER_ITEM_INVALID = -1;
+    protected static final int NAVDRAWER_ITEM_SEPARATOR = -2;
+    protected static final int NAVDRAWER_ITEM_SEPARATOR_SPECIAL = -3;
+
+    private ViewGroup mDrawerItemsListContainer;
+    // views that correspond to each navdrawer item, null if not yet created
+    private View[] mNavDrawerItemViews = null;
+
+    // titles for navdrawer items (indices must correspond to the above)
+    private static final int[] NAVDRAWER_TITLE_RES_ID = new int[]{
+            R.string.navdrawer_item_standard ,
+            R.string.navdrawer_item_material,
+            R.string.navdrawer_item_dialog,
+            R.string.navdrawer_item_without_bullter,
+            R.string.navdrawer_item_custom_xml,
+            R.string.navdrawer_item_custom_header,
+            R.string.navdrawer_item_custom_row,
+            R.string.navdrawer_item_github,
+            R.string.navdrawer_item_donate,
+            R.string.navdrawer_item_info
+    };
+
+
+    // icons for navdrawer items (indices must correspond to above array)
+    private static final int[] NAVDRAWER_ICON_RES_ID = new int[] {
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_launcher,
+            R.drawable.ic_github,
+            R.drawable.ic_money,
+            R.drawable.ic_l_info
+    };
+
+    // delay to launch nav drawer item, to allow close animation to play
+    private static final int NAVDRAWER_LAUNCH_DELAY = 250;
+
+    private DrawerLayout mDrawerLayout;
+    private UtilsBase.ActionBarDrawerToggleWrapper mDrawerToggle;
+
+    // A Runnable that we should execute when the navigation drawer finishes its closing animation
+    private Runnable mDeferredOnDrawerClosedRunnable;
+    private Handler mHandler;
+    private BaseFragment mSelectedFragment;
 
     private IabHelper mHelper;
 
     private static String TAG= "MainActivity";
 
-    //Used in savedInstanceState
     private static String BUNDLE_SELECTEDFRAGMENT="BDL_SELFRG";
-    private static final int CASE_STD=0;
-    private static final int CASE_CUSTOM_XML=1;
-    private static final int CASE_WITHOUT_BULLET=2;
-    private static final int CASE_CUSTOM_HEADER=3;
-    private static final int CASE_CUSTOM_ROW=4;
-    private static final int CASE_DIALOG=5;
-    private static final int CASE_DEBUG=6;
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(BUNDLE_SELECTEDFRAGMENT,mSelectedFragment);
+        outState.putInt(BUNDLE_SELECTEDFRAGMENT,mSelectedFragment.getSelfNavDrawerItem());
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -89,15 +149,9 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mUtils = new UtilsBase(this);
+        mHandler = new Handler();
 
-        // set a custom shadow_changelogdemo_customlayout that overlays the main content when the drawer
-        // opens
-        mDrawer.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
-        _initMenu();
-        mDrawerToggle = new CustomActionBarDrawerToggle(this, mDrawer);
-        mDrawer.setDrawerListener(mDrawerToggle);
         // ---------------------------------------------------------------
         // ...
         String base64EncodedPublicKey= IabUtil.key;
@@ -123,15 +177,17 @@ public class MainActivity extends ActionBarActivity {
         });
 
         //-----------------------------------------------------------------
-        BaseFragment baseFragment=null;
+
         if (savedInstanceState!=null){
-            mSelectedFragment = savedInstanceState.getInt(BUNDLE_SELECTEDFRAGMENT);
-            baseFragment= selectFragment(mSelectedFragment);
+            int mSelectedFragmentIndex = savedInstanceState.getInt(BUNDLE_SELECTEDFRAGMENT);
+            mSelectedFragment= selectFragment(mSelectedFragmentIndex);
         }else{
-            baseFragment=new StandardFragment();
+            mSelectedFragment=new StandardFragment();
         }
-        if (baseFragment!=null)
-            openFragment(baseFragment);
+        if (mSelectedFragment!=null)
+            openFragment(mSelectedFragment);
+
+        setupNavDrawer();
         //-----------------------------------------------------------------
     }
 
@@ -155,129 +211,36 @@ public class MainActivity extends ActionBarActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    /* Called whenever we call invalidateOptionsMenu() */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
-        //boolean drawerOpen = mDrawer.isDrawerOpen(mDrawerList);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-		/*
-		 * The action bar home/up should open or close the drawer.
-		 * ActionBarDrawerToggle will take care of this.
-		 */
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        switch (item.getItemId()) {
-
-            //About
-            case R.id.menu_about:
-                Utils.showAbout(this);
-                return true;
-
-            //Real library changelog
-            case R.id.menu_changelog:
-                Utils.showChangeLog(this);
-                return true;
-
-            case R.id.menu_beer:
-                IabUtil.showBeer(this, mHelper);
-                return true;
-        }
-
-
-        // Handle your other action bar items...
-        return super.onOptionsItemSelected(item);
-    }
-
-    private class CustomActionBarDrawerToggle extends ActionBarDrawerToggle {
-
-        public CustomActionBarDrawerToggle(Activity mActivity,DrawerLayout mDrawerLayout){
-            super(
-                    mActivity,
-                    mDrawerLayout,
-                    R.drawable.ic_navigation_drawer,
-                    R.string.demo_changelog_app_name,
-                    mCurrentTitle);
-        }
-
-        @Override
-        public void onDrawerClosed(View view) {
-            getSupportActionBar().setTitle(getString(mCurrentTitle));
-            supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-        }
-
-        @Override
-        public void onDrawerOpened(View drawerView) {
-            getSupportActionBar().setTitle(getString(R.string.demo_changelog_app_name));
-            supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-        }
-    }
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            // Highlight the selected item, update the title, and close the drawer
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-            BaseFragment baseFragment=selectFragment(position);
-
-            //Save mSelectedFragment, but discard Dialog
-            if (position!=CASE_DIALOG)
-                mSelectedFragment=position;
-
-            if (baseFragment!=null)
-                openFragment(baseFragment);
-            mDrawer.closeDrawer(mDrawerList);
-        }
-    }
-
 
     private BaseFragment selectFragment(int position){
         BaseFragment baseFragment=null;
 
         switch (position) {
             default:
-            case CASE_STD:
+            case NAVDRAWER_ITEM_STD:
                 baseFragment=new StandardFragment();
                 break;
-            case CASE_CUSTOM_XML:
-                baseFragment = new CustomXmlFileFragment();
+            case NAVDRAWER_ITEM_MAT:
+                baseFragment=new MaterialFragment();
                 break;
-            case CASE_WITHOUT_BULLET:
+            case NAVDRAWER_ITEM_WITHOUT_BULLET:
                 baseFragment = new WithoutBulletPointFragment();
                 break;
-            case CASE_CUSTOM_HEADER:
+            case NAVDRAWER_ITEM_CUSTOM_XML:
+                baseFragment = new CustomXmlFileFragment();
+                break;
+            case NAVDRAWER_ITEM_CUSTOM_HEADER:
                 baseFragment = new CustomLayoutFragment();
                 break;
-            case CASE_CUSTOM_ROW:
+            case NAVDRAWER_ITEM_CUSTOM_ROW:
                 baseFragment = new CustomLayoutRowFragment();
-                break;
-            case CASE_DIALOG:
-                openDialogFragment(new DialogStandardFragment());
-                break;
-            case CASE_DEBUG:
-                baseFragment = new DebugParseFragment();
                 break;
         }
         return baseFragment;
     }
 
 
-    private void openDialogFragment(DialogStandardFragment dialogStandardFragment) {
+    private void openDialogFragment(DialogFragment dialogStandardFragment) {
         if (dialogStandardFragment!=null){
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
@@ -299,32 +262,10 @@ public class MainActivity extends ActionBarActivity {
             fragmentTransaction.replace(R.id.fragment_main,baseFragment);
             //fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-            mCurrentTitle=baseFragment.getTitleResourceId();
+            //mCurrentTitle=baseFragment.getTitleResourceId();
         }
     }
 
-
-    public static final String[] options = {
-            "Standard example",
-            "Custom xml file example",
-            "Without Bullet point example",
-            "Custom layout header example",
-            "Custom layout row example",
-            "Standard Dialog example",
-            "Debug"};
-
-
-    private void _initMenu(){
-        mDrawerList = (ListView) findViewById(R.id.drawer);
-
-        if (mDrawerList!=null){
-            mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, options));
-
-            mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        }
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -342,8 +283,321 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (mDrawerToggle != null && mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public IabHelper getHelper() {
         return mHelper;
+    }
+
+    //----------------------------------------------------------------------------
+    // Navigation Drawer
+    //----------------------------------------------------------------------------
+
+    /**
+     * Sets up the navigation drawer as appropriate. Note that the nav drawer will be
+     * different depending on whether the attendee indicated that they are attending the
+     * event on-site vs. attending remotely.
+     */
+    private void setupNavDrawer() {
+        // What nav drawer item should be selected?
+        int selfItem = getSelfNavDrawerItem();
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (mDrawerLayout == null) {
+            return;
+        }
+        if (selfItem == NAVDRAWER_ITEM_INVALID) {
+            // do not show a nav drawer
+            View navDrawer = mDrawerLayout.findViewById(R.id.navdrawer);
+            if (navDrawer != null) {
+                ((ViewGroup) navDrawer.getParent()).removeView(navDrawer);
+            }
+            mDrawerLayout = null;
+            return;
+        }
+
+        mDrawerToggle = mUtils.setupDrawerToggle(mDrawerLayout, new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // run deferred action, if we have one
+                if (mDeferredOnDrawerClosedRunnable != null) {
+                    mDeferredOnDrawerClosedRunnable.run();
+                    mDeferredOnDrawerClosedRunnable = null;
+                }
+
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                updateStatusBarForNavDrawerSlide(0f);
+                onNavDrawerStateChanged(false, false);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                updateStatusBarForNavDrawerSlide(1f);
+                onNavDrawerStateChanged(true, false);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                invalidateOptionsMenu();
+                onNavDrawerStateChanged(isNavDrawerOpen(), newState != DrawerLayout.STATE_IDLE);
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                updateStatusBarForNavDrawerSlide(slideOffset);
+                onNavDrawerSlide(slideOffset);
+            }
+        });
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        // populate the nav drawer with the correct items
+        populateNavDrawer();
+
+        mDrawerToggle.syncState();
+
+        // When the user runs the app for the first time, we want to land them with the
+        // navigation drawer open. But just the first time.
+        if (!PrefUtils.isWelcomeDone(this)) {
+            // first run of the app starts with the nav drawer open
+            PrefUtils.markWelcomeDone(this);
+            mDrawerLayout.openDrawer(Gravity.START);
+        }
+    }
+
+    /**
+     * Returns the navigation drawer item that corresponds to this Activity. Subclasses
+     * of BaseActivity override this to indicate what nav drawer item corresponds to them
+     * Return NAVDRAWER_ITEM_INVALID to mean that this Activity should not have a Nav Drawer.
+     */
+    protected int getSelfNavDrawerItem() {
+        if (mSelectedFragment != null)
+            return mSelectedFragment.getSelfNavDrawerItem();
+        return NAVDRAWER_ITEM_INVALID;
+    }
+
+    // Subclasses can override this for custom behavior
+    protected void onNavDrawerStateChanged(boolean isOpen, boolean isAnimating) {
+
+    }
+
+    protected boolean isNavDrawerOpen() {
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(Gravity.START);
+    }
+
+    private void updateStatusBarForNavDrawerSlide(float slideOffset) {
+
+    }
+
+    protected void onNavDrawerSlide(float offset) {
+    }
+
+
+
+    /** Populates the navigation drawer with the appropriate items. */
+    private void populateNavDrawer() {
+
+        mNavDrawerItems.clear();
+
+        // Explore is always shown
+        mNavDrawerItems.add(NAVDRAWER_ITEM_STD);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_MAT);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_DIALOG);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_CUSTOM_XML);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_CUSTOM_HEADER);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_CUSTOM_ROW);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_WITHOUT_BULLET);
+
+        mNavDrawerItems.add(NAVDRAWER_ITEM_SEPARATOR_SPECIAL);
+
+        mNavDrawerItems.add(NAVDRAWER_ITEM_GITHUB);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_DONATE);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_INFO);
+
+        createNavDrawerItems();
+    }
+
+    private void createNavDrawerItems() {
+        mDrawerItemsListContainer = (ViewGroup) findViewById(R.id.navdrawer_items_list);
+        if (mDrawerItemsListContainer == null) {
+            return;
+        }
+
+        mNavDrawerItemViews = new View[mNavDrawerItems.size()];
+        mDrawerItemsListContainer.removeAllViews();
+        int i = 0;
+        for (int itemId : mNavDrawerItems) {
+            mNavDrawerItemViews[i] = makeNavDrawerItem(itemId, mDrawerItemsListContainer);
+            mDrawerItemsListContainer.addView(mNavDrawerItemViews[i]);
+            ++i;
+        }
+    }
+
+    private View makeNavDrawerItem(final int itemId, ViewGroup container) {
+        boolean selected = getSelfNavDrawerItem() == itemId;
+        int layoutToInflate = 0;
+        if (itemId == NAVDRAWER_ITEM_SEPARATOR) {
+            layoutToInflate = R.layout.navdrawer_separator;
+        } else if (itemId == NAVDRAWER_ITEM_SEPARATOR_SPECIAL) {
+            layoutToInflate = R.layout.navdrawer_separator;
+        } else {
+            layoutToInflate = R.layout.navdrawer_item;
+        }
+        View view = getLayoutInflater().inflate(layoutToInflate, container, false);
+
+        if (isSeparator(itemId)) {
+            // we are done
+            //UIUtils.setAccessibilityIgnore(view);
+            return view;
+        }
+
+        ImageView iconView = (ImageView) view.findViewById(R.id.icon);
+        TextView titleView = (TextView) view.findViewById(R.id.title);
+        int iconId = itemId >= 0 && itemId < NAVDRAWER_ICON_RES_ID.length ?
+                NAVDRAWER_ICON_RES_ID[itemId] : 0;
+        int titleId = itemId >= 0 && itemId < NAVDRAWER_TITLE_RES_ID.length ?
+                NAVDRAWER_TITLE_RES_ID[itemId] : 0;
+
+        // set icon and text
+        iconView.setVisibility(iconId > 0 ? View.VISIBLE : View.GONE);
+        if (iconId > 0) {
+            iconView.setImageResource(iconId);
+        }
+        titleView.setText(getString(titleId));
+
+        formatNavDrawerItem(view, itemId, selected);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNavDrawerItemClicked(itemId);
+            }
+        });
+
+        return view;
+    }
+
+    private void onNavDrawerItemClicked(final int itemId) {
+        if (itemId == getSelfNavDrawerItem()) {
+            mDrawerLayout.closeDrawer(Gravity.START);
+            return;
+        }
+
+        if (isSpecialItem(itemId)) {
+            goToNavDrawerItem(itemId);
+        } else {
+            // launch the target Activity after a short delay, to allow the close animation to play
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    goToNavDrawerItem(itemId);
+                }
+            }, NAVDRAWER_LAUNCH_DELAY);
+
+            // change the active item on the list so the user can see the item changed
+            setSelectedNavDrawerItem(itemId);
+
+        }
+
+        mDrawerLayout.closeDrawer(Gravity.START);
+    }
+
+    private void formatNavDrawerItem(View view, int itemId, boolean selected) {
+        if (isSeparator(itemId)) {
+            // not applicable
+            return;
+        }
+
+        ImageView iconView = (ImageView) view.findViewById(R.id.icon);
+        TextView titleView = (TextView) view.findViewById(R.id.title);
+
+        // configure its appearance according to whether or not it's selected
+        titleView.setTextColor(selected ?
+                getResources().getColor(R.color.navdrawer_text_color_selected) :
+                getResources().getColor(R.color.navdrawer_text_color));
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+            iconView.setColorFilter(selected ?
+                    getResources().getColor(R.color.navdrawer_icon_tint_selected) :
+                    getResources().getColor(R.color.navdrawer_icon_tint));
+        }
+    }
+
+    private boolean isSpecialItem(int itemId) {
+        return itemId == NAVDRAWER_ITEM_DONATE || itemId == NAVDRAWER_ITEM_INFO || itemId == NAVDRAWER_ITEM_GITHUB || itemId == NAVDRAWER_ITEM_DIALOG;
+    }
+
+    private boolean isSeparator(int itemId) {
+        return itemId == NAVDRAWER_ITEM_SEPARATOR || itemId == NAVDRAWER_ITEM_SEPARATOR_SPECIAL;
+    }
+
+    private void goToNavDrawerItem(int item) {
+
+        BaseFragment fg = null;
+        switch (item) {
+            case NAVDRAWER_ITEM_STD:
+                fg =selectFragment(item);
+                break;
+            case NAVDRAWER_ITEM_MAT:
+                fg = selectFragment(item);
+                break;
+            case NAVDRAWER_ITEM_CUSTOM_XML:
+                fg = selectFragment(item);
+                break;
+            case NAVDRAWER_ITEM_WITHOUT_BULLET:
+                fg = selectFragment(item);
+                break;
+            case  NAVDRAWER_ITEM_CUSTOM_ROW:
+                fg = selectFragment(item);
+                break;
+            case  NAVDRAWER_ITEM_CUSTOM_HEADER:
+                fg = selectFragment(item);
+                break;
+            case  NAVDRAWER_ITEM_DIALOG:
+                openDialogFragment(new DialogMaterialFragment());
+                break;
+            case NAVDRAWER_ITEM_DONATE:
+                IabUtil.showBeer(this, mHelper);
+                break;
+            case NAVDRAWER_ITEM_INFO:
+                Utils.showAbout(this);
+                break;
+            case NAVDRAWER_ITEM_GITHUB:
+                String url = "https://github.com/gabrielemariotti/changeloglib/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                break;
+        }
+
+        if (fg != null){
+            mSelectedFragment = fg;
+            openFragment(fg);
+        }
+    }
+
+    /**
+     * Sets up the given navdrawer item's appearance to the selected state. Note: this could
+     * also be accomplished (perhaps more cleanly) with state-based layouts.
+     */
+    private void setSelectedNavDrawerItem(int itemId) {
+        if (mNavDrawerItemViews != null) {
+            for (int i = 0; i < mNavDrawerItemViews.length; i++) {
+                if (i < mNavDrawerItems.size()) {
+                    int thisItemId = mNavDrawerItems.get(i);
+                    formatNavDrawerItem(mNavDrawerItemViews[i], thisItemId, itemId == thisItemId);
+                }
+            }
+        }
     }
 
 

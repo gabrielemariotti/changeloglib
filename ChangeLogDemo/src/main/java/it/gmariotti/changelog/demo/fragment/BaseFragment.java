@@ -58,4 +58,6 @@ public abstract class BaseFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public abstract int getSelfNavDrawerItem();
 }
