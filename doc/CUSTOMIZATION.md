@@ -90,7 +90,7 @@ You can use them with a simple:
         />
 ```
 
-You can find an example in [`demo_changelogrow_fragment_material.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelogrow_fragment_material.xml)
+You can find an example in [`demo_changelogrow_fragment_material.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelog_fragment_material.xml)
 You can find a screenshot [here](/ChangeLogDemo/README.md#material-specs).
 
 
