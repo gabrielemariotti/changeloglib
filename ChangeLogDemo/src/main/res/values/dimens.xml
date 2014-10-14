@@ -2,4 +2,9 @@
 <resources>
     <dimen name="drawer_width">240dp</dimen>
     <dimen name="text_size_medium">14sp</dimen>
+
+    <!--Material design-->
+    <dimen name="keyline_1">16dp</dimen>
+    <dimen name="navdrawer_width">240dp</dimen>
+    <dimen name="navdrawer_image_height">120dp</dimen>
 </resources>

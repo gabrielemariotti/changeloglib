@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import it.gmariotti.changelog.demo.MainActivity;
 import it.gmariotti.changelog.demo.R;
 
 
@@ -46,5 +47,10 @@ public class WithoutBulletPointFragment extends BaseFragment {
     @Override
     public int getTitleResourceId() {
         return R.string.demo_changelog_title_withoutbulletpoint;
+    }
+
+    @Override
+    public int getSelfNavDrawerItem() {
+        return MainActivity.NAVDRAWER_ITEM_WITHOUT_BULLET;
     }
 }

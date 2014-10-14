@@ -23,6 +23,7 @@
 
     <!-- Title -->
     <string name="demo_changelog_title_standard">Standard Example</string>
+    <string name="demo_changelog_title_material">Material Example</string>
     <string name="demo_changelog_title_customexml">Custom changelog xml file Example</string>
     <string name="demo_changelog_title_withoutbulletpoint">Without Bullet Point Example</string>
     <string name="demo_changelog_title_customlayout">Custom Layout Header Example</string>
@@ -30,6 +31,17 @@
     <string name="demo_changelog_title_debug">Debug</string>
     <string name="demo_changelog_title_changelog">Change Log</string>
     <string name="demo_changelog_title_standarddialog">Standard Dialog Example</string>
+    <string name="navdrawer_item_standard">Standard example</string>
+    <string name="navdrawer_item_material">Material example</string>
+    <string name="navdrawer_item_dialog">Standard Dialog</string>
+    <string name="navdrawer_item_custom_xml">Custom xml file</string>
+    <string name="navdrawer_item_custom_header">Custom layout header</string>
+    <string name="navdrawer_item_custom_row">Custom layout row </string>
+    <string name="navdrawer_item_without_bullter">Without Bullet point</string>
+    <string name="navdrawer_item_github">Github code</string>
+    <string name="navdrawer_item_donate">Donate</string>
+    <string name="navdrawer_item_info">About</string>
+
 
     <!-- Error message -->
     <string name="demo_changelog_error_debug">An error occurred while parsing xml file</string>

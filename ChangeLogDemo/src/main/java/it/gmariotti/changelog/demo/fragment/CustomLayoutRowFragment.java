@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import it.gmariotti.changelog.demo.MainActivity;
 import it.gmariotti.changelog.demo.R;
 
 
@@ -56,5 +57,10 @@ public class CustomLayoutRowFragment extends BaseFragment {
     @Override
     public int getTitleResourceId() {
         return R.string.demo_changelog_title_customlayoutrow;
+    }
+
+    @Override
+    public int getSelfNavDrawerItem() {
+        return MainActivity.NAVDRAWER_ITEM_CUSTOM_ROW;
     }
 }
