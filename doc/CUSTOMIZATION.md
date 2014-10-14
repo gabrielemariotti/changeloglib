@@ -4,6 +4,7 @@ There are many ways you can customize the changelog view.
 
 * [Custom Header Layout](#custom-header-layout)
 * [Custom Row Layout](#custom-row-layout)
+* [Layouts with Material Specs](#layouts-with-material-specs)
 * [Custom ChangeLog XML](#custom-changeLog-xml)
 * [Bullet Point](#bullet-point)
 * [Html Text Markup](#html-text-markup)
@@ -30,7 +31,7 @@ You can use your own xml layout with `chg:rowHeaderLayoutId` attribute in `Chang
     />
 ```
 
-The quickest way to start with this would be to copy the [`changelogrowheader_layout.xml`](/ChangeLogLibrary/src/main/res/layout/changelogrowheader_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
+The quickest way to start with this would be to copy the [`changelogrowheader_layout.xml`](/ChangeLogLibrary/src/main/res/layout-v14/changelogrowheader_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
 There's a specific set of views you need to have in your layout:
 
 1. A `TextView` with the ID `chg_headerVersion` that display the Version Number
@@ -54,13 +55,44 @@ You can use your own xml layout with `chg:rowLayoutId` attribute in `ChangeLogLi
           chg:rowLayoutId="@layout/demo_changelogrow_layout"
     />
 ```
-The quickest way to start with this would be to copy the [`changelogrow_layout.xml`](https://github.com/gabrielemariotti/changeloglib/tree/master/ChangeLogLibrary/src/main/res/layout/changelogrow_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
+The quickest way to start with this would be to copy the [`changelogrow_layout.xml`](/ChangeLogLibrary/src/main/res/layout-v14/changelogrow_layout.xml) layout resource file from this project into your own and modify its contents.<br/>
 There's a specific set of views you need to have in your layout:
 
 1. A `TextView` with the ID `chg_textbullet` that display the bullet point
 2. A `TextView` with the ID `chg_text` that display the actual text that will be displayed as a change in your List
 
 You can find an example in [`demo_changelogrow_layout.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelogrow_layout.xml)
+
+### Layouts with Material Specs
+
+Library contains also 2 layouts with **Material specs and metrics**:
+
+- [`res/layout/changelogrow_material_layout.xml`](/ChangeLogLibrary/src/main/res/layout-v14/changelogrow_material_layout.xml) l XML layout for each row.
+- [`res/layout/changelogrowheader_material_layout.xml`](/ChangeLogLibrary/src/main/res/layout-v14/changelogrowheader_material_layout.xml) l XML layout for each header.
+
+You can use them with a simple:
+
+``` xml
+
+    <!-- Material layout -->
+     <view
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="it.gmariotti.changelibs.library.view.ChangeLogListView"
+        android:id="@+id/view"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        chg:rowHeaderLayoutId="@layout/changelogrowheader_material_layout"
+        chg:rowLayoutId="@layout/changelogrow_material_layout"
+        android:layout_gravity="center"
+        />
+```
+
+You can find an example in [`demo_changelogrow_fragment_material.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelogrow_fragment_material.xml)
+You can find a screenshot [here](/ChangeLogDemo/README.md#material-specs).
+
 
 ### Custom ChangeLog XML
 

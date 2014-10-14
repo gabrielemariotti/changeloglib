@@ -17,6 +17,14 @@ A basic usage with standard view and standard changelog.xml file.
 ![StdExample](/ChangeLogDemo/images/ex0.png)
 
 
+## Material specs
+
+A basic usage with material specs and metrics and standard changelog.xml file.
+[`demo_changelog_fragment_standard.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelog_fragment_material.xml)
+
+![MaterialeExample](/ChangeLogDemo/images/material0.png)
+
+
 ## Custom xml file Example
 
 An example with a custom `res/raw/custom_changelog.xml` file

@@ -10,7 +10,7 @@ You can add this library to your project adding a dependency to your `build.grad
 Card Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.1'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.2'
     }
 
 

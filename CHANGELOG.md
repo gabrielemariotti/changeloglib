@@ -1,9 +1,14 @@
 Change Log
 ===============================================================================
 
+Version 1.5.2 *(2014-10-14)*
+----------------------------
+ * Added new layouts with Material specs [(doc)](/doc/CUSTOMIZATION.md#layouts-with-material-specs)
+ * Updated to gradle 2.1 and gradle-plugin 0.13
+
 Version 1.5.1 *(2014-06-20)*
 ----------------------------
- * Added new changelogbug and changelogimprovement tags to use fixed prefix in changelog text [(doc)](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md#bug-and-improvement-tags)
+ * Added new changelogbug and changelogimprovement tags to use fixed prefix in changelog text [(doc)](/doc/CUSTOMIZATION.md#bug-and-improvement-tags)
  * Added a feature to make hyperlinks
  * Updated to gradle 1.12 and gradle-plugin 0.11
 
@@ -15,7 +20,7 @@ Version 1.5.0 *(2014-06-20)*
 
 Version 1.4.0 *(2013-11-19)*
 ----------------------------
- * Added a new feature to use an url to download your changelog.xml file [(doc)](https://github.com/gabrielemariotti/changeloglib/tree/master/doc/CUSTOMIZATION.md#use-an-url-to-download-the-changelog.xml-file)
+ * Added a new feature to use an url to download your changelog.xml file [(doc)](/doc/CUSTOMIZATION.md#use-an-url-to-download-the-changelog.xml-file)
  * Migrated library and demo to sdk 19 (updated gradle files)
 
 

@@ -19,7 +19,8 @@ Travis dev: [![Build Status](https://travis-ci.org/gabrielemariotti/changeloglib
 
 **If you would like, you can support my work, donating through the demo app.**
 
-For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
+
+For more examples and screenshots you can read this [document:](/ChangeLogDemo/README.md)
 
 
 ## Feature
@@ -31,6 +32,7 @@ ChangeLog Library provides a custom `ListView` to display a change log through a
 * you can customize layout and behaviour
 * it supports multi language
 * it supports API 7+
+
 
 ## Usage
 
@@ -84,7 +86,7 @@ See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.1'
+        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.2'
     }
 
 [To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
