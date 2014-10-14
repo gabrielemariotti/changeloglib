@@ -22,7 +22,7 @@ A basic usage with standard view and standard changelog.xml file.
 A basic usage with material specs and metrics and standard changelog.xml file.
 [`demo_changelog_fragment_standard.xml`](/ChangeLogDemo/src/main/res/layout/demo_changelog_fragment_material.xml)
 
-![MaterialeExample](/ChangeLogDemo/images/material0.png)
+![MaterialeExample](/ChangeLogDemo/images/material1.png)
 
 
 ## Custom xml file Example
