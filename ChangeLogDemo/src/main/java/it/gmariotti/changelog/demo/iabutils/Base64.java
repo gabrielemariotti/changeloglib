@@ -39,8 +39,7 @@ package it.gmariotti.changelog.demo.iabutils;
  * Base64 converter class. This code is not a complete MIME encoder;
  * it simply converts binary data to base64 data and back.
  *
- * <p>Note {@link CharBase64} is a GWT-compatible implementation of this
- * class.
+ *
  */
 public class Base64 {
     /** Specify encoding (value is {@code true}). */
@@ -59,63 +58,63 @@ public class Base64 {
      * The 64 valid Base64 values.
      */
     private final static byte[] ALPHABET =
-        {(byte) 'A', (byte) 'B', (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F',
-        (byte) 'G', (byte) 'H', (byte) 'I', (byte) 'J', (byte) 'K',
-        (byte) 'L', (byte) 'M', (byte) 'N', (byte) 'O', (byte) 'P',
-        (byte) 'Q', (byte) 'R', (byte) 'S', (byte) 'T', (byte) 'U',
-        (byte) 'V', (byte) 'W', (byte) 'X', (byte) 'Y', (byte) 'Z',
-        (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd', (byte) 'e',
-        (byte) 'f', (byte) 'g', (byte) 'h', (byte) 'i', (byte) 'j',
-        (byte) 'k', (byte) 'l', (byte) 'm', (byte) 'n', (byte) 'o',
-        (byte) 'p', (byte) 'q', (byte) 'r', (byte) 's', (byte) 't',
-        (byte) 'u', (byte) 'v', (byte) 'w', (byte) 'x', (byte) 'y',
-        (byte) 'z', (byte) '0', (byte) '1', (byte) '2', (byte) '3',
-        (byte) '4', (byte) '5', (byte) '6', (byte) '7', (byte) '8',
-        (byte) '9', (byte) '+', (byte) '/'};
+            {(byte) 'A', (byte) 'B', (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F',
+                    (byte) 'G', (byte) 'H', (byte) 'I', (byte) 'J', (byte) 'K',
+                    (byte) 'L', (byte) 'M', (byte) 'N', (byte) 'O', (byte) 'P',
+                    (byte) 'Q', (byte) 'R', (byte) 'S', (byte) 'T', (byte) 'U',
+                    (byte) 'V', (byte) 'W', (byte) 'X', (byte) 'Y', (byte) 'Z',
+                    (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd', (byte) 'e',
+                    (byte) 'f', (byte) 'g', (byte) 'h', (byte) 'i', (byte) 'j',
+                    (byte) 'k', (byte) 'l', (byte) 'm', (byte) 'n', (byte) 'o',
+                    (byte) 'p', (byte) 'q', (byte) 'r', (byte) 's', (byte) 't',
+                    (byte) 'u', (byte) 'v', (byte) 'w', (byte) 'x', (byte) 'y',
+                    (byte) 'z', (byte) '0', (byte) '1', (byte) '2', (byte) '3',
+                    (byte) '4', (byte) '5', (byte) '6', (byte) '7', (byte) '8',
+                    (byte) '9', (byte) '+', (byte) '/'};
 
     /**
      * The 64 valid web safe Base64 values.
      */
     private final static byte[] WEBSAFE_ALPHABET =
-        {(byte) 'A', (byte) 'B', (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F',
-        (byte) 'G', (byte) 'H', (byte) 'I', (byte) 'J', (byte) 'K',
-        (byte) 'L', (byte) 'M', (byte) 'N', (byte) 'O', (byte) 'P',
-        (byte) 'Q', (byte) 'R', (byte) 'S', (byte) 'T', (byte) 'U',
-        (byte) 'V', (byte) 'W', (byte) 'X', (byte) 'Y', (byte) 'Z',
-        (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd', (byte) 'e',
-        (byte) 'f', (byte) 'g', (byte) 'h', (byte) 'i', (byte) 'j',
-        (byte) 'k', (byte) 'l', (byte) 'm', (byte) 'n', (byte) 'o',
-        (byte) 'p', (byte) 'q', (byte) 'r', (byte) 's', (byte) 't',
-        (byte) 'u', (byte) 'v', (byte) 'w', (byte) 'x', (byte) 'y',
-        (byte) 'z', (byte) '0', (byte) '1', (byte) '2', (byte) '3',
-        (byte) '4', (byte) '5', (byte) '6', (byte) '7', (byte) '8',
-        (byte) '9', (byte) '-', (byte) '_'};
+            {(byte) 'A', (byte) 'B', (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F',
+                    (byte) 'G', (byte) 'H', (byte) 'I', (byte) 'J', (byte) 'K',
+                    (byte) 'L', (byte) 'M', (byte) 'N', (byte) 'O', (byte) 'P',
+                    (byte) 'Q', (byte) 'R', (byte) 'S', (byte) 'T', (byte) 'U',
+                    (byte) 'V', (byte) 'W', (byte) 'X', (byte) 'Y', (byte) 'Z',
+                    (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd', (byte) 'e',
+                    (byte) 'f', (byte) 'g', (byte) 'h', (byte) 'i', (byte) 'j',
+                    (byte) 'k', (byte) 'l', (byte) 'm', (byte) 'n', (byte) 'o',
+                    (byte) 'p', (byte) 'q', (byte) 'r', (byte) 's', (byte) 't',
+                    (byte) 'u', (byte) 'v', (byte) 'w', (byte) 'x', (byte) 'y',
+                    (byte) 'z', (byte) '0', (byte) '1', (byte) '2', (byte) '3',
+                    (byte) '4', (byte) '5', (byte) '6', (byte) '7', (byte) '8',
+                    (byte) '9', (byte) '-', (byte) '_'};
 
     /**
      * Translates a Base64 value to either its 6-bit reconstruction value
      * or a negative number indicating some other meaning.
      **/
     private final static byte[] DECODABET = {-9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal  0 -  8
-        -5, -5, // Whitespace: Tab and Linefeed
-        -9, -9, // Decimal 11 - 12
-        -5, // Whitespace: Carriage Return
-        -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 14 - 26
-        -9, -9, -9, -9, -9, // Decimal 27 - 31
-        -5, // Whitespace: Space
-        -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 33 - 42
-        62, // Plus sign at decimal 43
-        -9, -9, -9, // Decimal 44 - 46
-        63, // Slash at decimal 47
-        52, 53, 54, 55, 56, 57, 58, 59, 60, 61, // Numbers zero through nine
-        -9, -9, -9, // Decimal 58 - 60
-        -1, // Equals sign at decimal 61
-        -9, -9, -9, // Decimal 62 - 64
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Letters 'A' through 'N'
-        14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, // Letters 'O' through 'Z'
-        -9, -9, -9, -9, -9, -9, // Decimal 91 - 96
-        26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, // Letters 'a' through 'm'
-        39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, // Letters 'n' through 'z'
-        -9, -9, -9, -9, -9 // Decimal 123 - 127
+            -5, -5, // Whitespace: Tab and Linefeed
+            -9, -9, // Decimal 11 - 12
+            -5, // Whitespace: Carriage Return
+            -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 14 - 26
+            -9, -9, -9, -9, -9, // Decimal 27 - 31
+            -5, // Whitespace: Space
+            -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 33 - 42
+            62, // Plus sign at decimal 43
+            -9, -9, -9, // Decimal 44 - 46
+            63, // Slash at decimal 47
+            52, 53, 54, 55, 56, 57, 58, 59, 60, 61, // Numbers zero through nine
+            -9, -9, -9, // Decimal 58 - 60
+            -1, // Equals sign at decimal 61
+            -9, -9, -9, // Decimal 62 - 64
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Letters 'A' through 'N'
+            14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, // Letters 'O' through 'Z'
+            -9, -9, -9, -9, -9, -9, // Decimal 91 - 96
+            26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, // Letters 'a' through 'm'
+            39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, // Letters 'n' through 'z'
+            -9, -9, -9, -9, -9 // Decimal 123 - 127
         /*  ,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 128 - 139
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 140 - 152
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 153 - 165
@@ -130,28 +129,28 @@ public class Base64 {
 
     /** The web safe decodabet */
     private final static byte[] WEBSAFE_DECODABET =
-        {-9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal  0 -  8
-        -5, -5, // Whitespace: Tab and Linefeed
-        -9, -9, // Decimal 11 - 12
-        -5, // Whitespace: Carriage Return
-        -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 14 - 26
-        -9, -9, -9, -9, -9, // Decimal 27 - 31
-        -5, // Whitespace: Space
-        -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 33 - 44
-        62, // Dash '-' sign at decimal 45
-        -9, -9, // Decimal 46-47
-        52, 53, 54, 55, 56, 57, 58, 59, 60, 61, // Numbers zero through nine
-        -9, -9, -9, // Decimal 58 - 60
-        -1, // Equals sign at decimal 61
-        -9, -9, -9, // Decimal 62 - 64
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Letters 'A' through 'N'
-        14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, // Letters 'O' through 'Z'
-        -9, -9, -9, -9, // Decimal 91-94
-        63, // Underscore '_' at decimal 95
-        -9, // Decimal 96
-        26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, // Letters 'a' through 'm'
-        39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, // Letters 'n' through 'z'
-        -9, -9, -9, -9, -9 // Decimal 123 - 127
+            {-9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal  0 -  8
+                    -5, -5, // Whitespace: Tab and Linefeed
+                    -9, -9, // Decimal 11 - 12
+                    -5, // Whitespace: Carriage Return
+                    -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 14 - 26
+                    -9, -9, -9, -9, -9, // Decimal 27 - 31
+                    -5, // Whitespace: Space
+                    -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, -9, // Decimal 33 - 44
+                    62, // Dash '-' sign at decimal 45
+                    -9, -9, // Decimal 46-47
+                    52, 53, 54, 55, 56, 57, 58, 59, 60, 61, // Numbers zero through nine
+                    -9, -9, -9, // Decimal 58 - 60
+                    -1, // Equals sign at decimal 61
+                    -9, -9, -9, // Decimal 62 - 64
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Letters 'A' through 'N'
+                    14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, // Letters 'O' through 'Z'
+                    -9, -9, -9, -9, // Decimal 91-94
+                    63, // Underscore '_' at decimal 95
+                    -9, // Decimal 96
+                    26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, // Letters 'a' through 'm'
+                    39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, // Letters 'n' through 'z'
+                    -9, -9, -9, -9, -9 // Decimal 123 - 127
         /*  ,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 128 - 139
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 140 - 152
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 153 - 165
@@ -162,7 +161,7 @@ public class Base64 {
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 218 - 230
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,     // Decimal 231 - 243
         -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9         // Decimal 244 - 255 */
-        };
+            };
 
     // Indicates white space in encoding
     private final static byte WHITE_SPACE_ENC = -5;
@@ -198,7 +197,7 @@ public class Base64 {
      * @since 1.3
      */
     private static byte[] encode3to4(byte[] source, int srcOffset,
-            int numSigBytes, byte[] destination, int destOffset, byte[] alphabet) {
+                                     int numSigBytes, byte[] destination, int destOffset, byte[] alphabet) {
         //           1         2         3
         // 01234567890123456789012345678901 Bit position
         // --------000000001111111122222222 Array position from threeBytes
@@ -212,8 +211,8 @@ public class Base64 {
         // when Java treats a value as negative that is cast from a byte to an int.
         int inBuff =
                 (numSigBytes > 0 ? ((source[srcOffset] << 24) >>> 8) : 0)
-                | (numSigBytes > 1 ? ((source[srcOffset + 1] << 24) >>> 16) : 0)
-                | (numSigBytes > 2 ? ((source[srcOffset + 2] << 24) >>> 24) : 0);
+                        | (numSigBytes > 1 ? ((source[srcOffset + 1] << 24) >>> 16) : 0)
+                        | (numSigBytes > 2 ? ((source[srcOffset + 2] << 24) >>> 24) : 0);
 
         switch (numSigBytes) {
             case 3:
@@ -274,7 +273,7 @@ public class Base64 {
      * @since 1.4
      */
     public static String encode(byte[] source, int off, int len, byte[] alphabet,
-            boolean doPadding) {
+                                boolean doPadding) {
         byte[] outBuff = encode(source, off, len, alphabet, Integer.MAX_VALUE);
         int outLen = outBuff.length;
 
@@ -301,11 +300,11 @@ public class Base64 {
      * @return the BASE64-encoded byte array
      */
     public static byte[] encode(byte[] source, int off, int len, byte[] alphabet,
-            int maxLineLength) {
+                                int maxLineLength) {
         int lenDiv3 = (len + 2) / 3; // ceil(len / 3)
         int len43 = lenDiv3 * 4;
         byte[] outBuff = new byte[len43 // Main 4:3
-                                  + (len43 / maxLineLength)]; // New lines
+                + (len43 / maxLineLength)]; // New lines
 
         int d = 0;
         int e = 0;
@@ -318,8 +317,8 @@ public class Base64 {
             // but inlined for faster encoding (~20% improvement)
             int inBuff =
                     ((source[d + off] << 24) >>> 8)
-                    | ((source[d + 1 + off] << 24) >>> 16)
-                    | ((source[d + 2 + off] << 24) >>> 24);
+                            | ((source[d + 1 + off] << 24) >>> 16)
+                            | ((source[d + 2 + off] << 24) >>> 24);
             outBuff[e] = alphabet[(inBuff >>> 18)];
             outBuff[e + 1] = alphabet[(inBuff >>> 12) & 0x3f];
             outBuff[e + 2] = alphabet[(inBuff >>> 6) & 0x3f];
@@ -377,12 +376,12 @@ public class Base64 {
      * @since 1.3
      */
     private static int decode4to3(byte[] source, int srcOffset,
-            byte[] destination, int destOffset, byte[] decodabet) {
+                                  byte[] destination, int destOffset, byte[] decodabet) {
         // Example: Dk==
         if (source[srcOffset + 2] == EQUALS_SIGN) {
             int outBuff =
                     ((decodabet[source[srcOffset]] << 24) >>> 6)
-                    | ((decodabet[source[srcOffset + 1]] << 24) >>> 12);
+                            | ((decodabet[source[srcOffset + 1]] << 24) >>> 12);
 
             destination[destOffset] = (byte) (outBuff >>> 16);
             return 1;
@@ -390,8 +389,8 @@ public class Base64 {
             // Example: DkL=
             int outBuff =
                     ((decodabet[source[srcOffset]] << 24) >>> 6)
-                    | ((decodabet[source[srcOffset + 1]] << 24) >>> 12)
-                    | ((decodabet[source[srcOffset + 2]] << 24) >>> 18);
+                            | ((decodabet[source[srcOffset + 1]] << 24) >>> 12)
+                            | ((decodabet[source[srcOffset + 2]] << 24) >>> 18);
 
             destination[destOffset] = (byte) (outBuff >>> 16);
             destination[destOffset + 1] = (byte) (outBuff >>> 8);
@@ -400,9 +399,9 @@ public class Base64 {
             // Example: DkLE
             int outBuff =
                     ((decodabet[source[srcOffset]] << 24) >>> 6)
-                    | ((decodabet[source[srcOffset + 1]] << 24) >>> 12)
-                    | ((decodabet[source[srcOffset + 2]] << 24) >>> 18)
-                    | ((decodabet[source[srcOffset + 3]] << 24) >>> 24);
+                            | ((decodabet[source[srcOffset + 1]] << 24) >>> 12)
+                            | ((decodabet[source[srcOffset + 2]] << 24) >>> 18)
+                            | ((decodabet[source[srcOffset + 3]] << 24) >>> 24);
 
             destination[destOffset] = (byte) (outBuff >> 16);
             destination[destOffset + 1] = (byte) (outBuff >> 8);
