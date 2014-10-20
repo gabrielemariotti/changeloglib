@@ -3,7 +3,7 @@
 
     <!-- This is Dashclock changelog (https://code.google.com/p/dashclock/wiki/Changelog), used only for test. -->
 
-    <changelogversion versionName="1.5" changeDate="June 17,2013">
+    <changelogversion versionName="1.5" versionCode="5" changeDate="June 17,2013">
         <changelogtext>[b]New![/b] Use DashClock with Android 4.2's Daydream feature;
             great for use with desktop docks!
         </changelogtext>
@@ -13,7 +13,7 @@
         <changelogtext>[b][font color=red]For developers:[/font][/b] New API features</changelogtext>
     </changelogversion>
 
-    <changelogversion versionName="1.4.3" changeDate="March 25, 2013">
+    <changelogversion versionName="1.4.3" versionCode="4" changeDate="March 25, 2013">
         <changelogtext><![CDATA[<b><font color=red>New!</font></b> Translations for Greek,
                 Dutch and Brazilian Portuguese]]>
         </changelogtext>
@@ -24,7 +24,7 @@
         <changelogtext>Fixed a couple crashes</changelogtext>
     </changelogversion>
 
-    <changelogversion versionName="1.4.2" changeDate="March 6, 2013">
+    <changelogversion versionName="1.4.2" versionCode="3" changeDate="March 6, 2013">
         <changelogtext>[b]New![/b] Analog clock options in appearance configuration
         </changelogtext>
         <changelogtext>[b]Fixed[/b] an issue where the home screen widget wouldn't
@@ -39,11 +39,11 @@
         <changelogtext>Updated translations for some languages</changelogtext>
     </changelogversion>
 
-    <changelogversion versionName="1.4.1" changeDate="March 1, 2013">
+    <changelogversion versionName="1.4.1" versionCode="2" changeDate="March 1, 2013">
         <changelogtext>Hotfix for SMS sender name issue</changelogtext>
     </changelogversion>
 
-    <changelogversion versionName="1.4" changeDate="Feb 28, 2013">
+    <changelogversion versionName="1.4" versionCode="1" changeDate="Feb 28, 2013">
 
         <changelogtext>[b]New![/b] Option to hide the settings button when the widget is
             expanded; if you enable this, you can always add a "Configure DashClock Widget" shortcut

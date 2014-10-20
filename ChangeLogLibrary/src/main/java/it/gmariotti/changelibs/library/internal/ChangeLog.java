@@ -24,6 +24,8 @@ import java.util.LinkedList;
  */
 public class ChangeLog {
 
+    private int headerRowCount;
+
     /**
      * All changelog rows
      */
@@ -38,6 +40,7 @@ public class ChangeLog {
 
     public ChangeLog(){
         rows=new LinkedList<ChangeLogRow>();
+        headerRowCount = 0;
     }
 
     /**
@@ -49,6 +52,9 @@ public class ChangeLog {
         if (row!=null){
             if (rows==null) rows=new LinkedList<ChangeLogRow>();
             rows.add(row);
+            if (row.isHeader()){
+                headerRowCount++;
+            }
         }
     }
 
@@ -91,11 +97,7 @@ public class ChangeLog {
         return rows;
     }
 
-    public void setRows(LinkedList<ChangeLogRow> rows) {
-        this.rows = rows;
+    public int getHeaderRowCount() {
+        return headerRowCount;
     }
-
-
-
-
 }

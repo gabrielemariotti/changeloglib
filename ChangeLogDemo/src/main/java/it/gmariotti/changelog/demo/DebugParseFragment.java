@@ -145,7 +145,7 @@ public class DebugParseFragment extends BaseFragment {
      */
     private void parseFile(int rawFileResourceId){
 
-        XmlParser parse = new XmlParser(this.getActivity(),rawFileResourceId);
+        XmlParser parse = new XmlParser(this.getActivity(),rawFileResourceId,0, Integer.MAX_VALUE);
         try{
             ChangeLog log=parse.readChangeLogFile();
             if (mTextChangeLog!=null)

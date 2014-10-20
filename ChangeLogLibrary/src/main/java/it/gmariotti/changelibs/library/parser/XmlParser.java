@@ -16,6 +16,7 @@
 package it.gmariotti.changelibs.library.parser;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
 
@@ -71,9 +72,11 @@ import it.gmariotti.changelibs.library.internal.ChangeLogRowHeader;
 public class XmlParser extends BaseParser {
 
     /** TAG for logging **/
-    private static String TAG="XmlParser";
-    private int mChangeLogFileResourceId= Constants.mChangeLogFileResourceId;
-    private String mChangeLogFileResourceUrl= null;
+    private static String TAG = "XmlParser";
+    private int mChangeLogFileResourceId = Constants.mChangeLogFileResourceId;
+    private String mChangeLogFileResourceUrl = null;
+    private int mMinimumVersionCode = 0;
+    private int mMaximumNumberOfLogs = Integer.MAX_VALUE;
 
     protected ChangeLogAdapter mChangeLogAdapter;
 
@@ -81,11 +84,11 @@ public class XmlParser extends BaseParser {
     //TAGs and ATTRIBUTEs in xml file
     //--------------------------------------------------------------------------------
 
-    private static final String TAG_CHANGELOG="changelog";
-    private static final String TAG_CHANGELOGVERSION="changelogversion";
-    private static final String TAG_CHANGELOGTEXT="changelogtext";
-    private static final String TAG_CHANGELOGBUG="changelogbug";
-    private static final String TAG_CHANGELOGIMPROVEMENT="changelogimprovement";
+    private static final String TAG_CHANGELOG = "changelog";
+    private static final String TAG_CHANGELOGVERSION = "changelogversion";
+    private static final String TAG_CHANGELOGTEXT = "changelogtext";
+    private static final String TAG_CHANGELOGBUG = "changelogbug";
+    private static final String TAG_CHANGELOGIMPROVEMENT = "changelogimprovement";
 
     private static final String ATTRIBUTE_BULLETEDLIST="bulletedList";
     private static final String ATTRIBUTE_VERSIONNAME="versionName";
@@ -107,9 +110,9 @@ public class XmlParser extends BaseParser {
     /**
      * Create a new instance for a context.
      *
-     * @param context  current Context
+     * @param context current Context
      */
-    public XmlParser(Context context){
+    public XmlParser(Context context) {
         super(context);
     }
 
@@ -118,23 +121,28 @@ public class XmlParser extends BaseParser {
      *
      * You have to use file in res/raw folder.
      *
-     * @param context  current Context
-     * @param changeLogFileResourceId  reference for a custom xml file
+     * @param context                 current Context
+     * @param changeLogFileResourceId reference for a custom xml file
      */
-    public XmlParser(Context context,int changeLogFileResourceId){
+    public XmlParser(Context context, int changeLogFileResourceId, int mMinimumVersionCode, int mMaximumNumberOfLogs) {
         super(context);
-        this.mChangeLogFileResourceId=changeLogFileResourceId;
+        this.mChangeLogFileResourceId = changeLogFileResourceId;
+        this.mMinimumVersionCode = mMinimumVersionCode;
+        this.mMaximumNumberOfLogs = mMaximumNumberOfLogs;
     }
 
     /**
      * Create a new instance for a context and with a custom url .
-     *
-     * @param context  current Context
-     * @param changeLogFileResourceUrl  url with xml files
+     * @param context                  current Context
+     * @param changeLogFileResourceUrl url with xml files
+     * @param mMinimumVersionCode      minimum version code for changelog to show
+     * @param mMaximumNumberOfLogs     maximum number of changelogs to show.
      */
-    public XmlParser(Context context,String changeLogFileResourceUrl){
+    public XmlParser(Context context, String changeLogFileResourceUrl, int mMinimumVersionCode, int mMaximumNumberOfLogs) {
         super(context);
-        this.mChangeLogFileResourceUrl=changeLogFileResourceUrl;
+        this.mChangeLogFileResourceUrl = changeLogFileResourceUrl;
+        this.mMinimumVersionCode = mMinimumVersionCode;
+        this.mMaximumNumberOfLogs = mMaximumNumberOfLogs;
     }
 
     //--------------------------------------------------------------------------------
@@ -148,22 +156,22 @@ public class XmlParser extends BaseParser {
      * @return {@link ChangeLog} obj with all data
      */
     @Override
-    public ChangeLog readChangeLogFile() throws Exception{
+    public ChangeLog readChangeLogFile() throws Exception {
 
-        ChangeLog chg=null;
+        ChangeLog chg = null;
 
         try {
-            InputStream is=null;
+            InputStream is = null;
 
-            if (mChangeLogFileResourceUrl!=null){
-                if (Util.isConnected(super.mContext)){
+            if (mChangeLogFileResourceUrl != null) {
+                if (Util.isConnected(super.mContext)) {
                     URL url = new URL(mChangeLogFileResourceUrl);
                     is = url.openStream();
                 }
-            }else{
+            } else {
                 is = mContext.getResources().openRawResource(mChangeLogFileResourceId);
             }
-            if (is!=null){
+            if (is != null) {
 
                 // Create a new XML Pull Parser.
                 XmlPullParser parser = Xml.newPullParser();
@@ -172,21 +180,21 @@ public class XmlParser extends BaseParser {
                 parser.nextTag();
 
                 // Create changelog obj that will contain all data
-                chg=new ChangeLog();
+                chg = new ChangeLog();
                 // Parse file
                 readChangeLogNode(parser, chg);
 
                 // Close inputstream
                 is.close();
-            }else{
-                Log.d(TAG,"Changelog.xml not found");
+            } else {
+                Log.d(TAG, "Changelog.xml not found");
                 throw new ChangeLogException("Changelog.xml not found");
             }
         } catch (XmlPullParserException xpe) {
-            Log.d(TAG,"XmlPullParseException while parsing changelog file",xpe);
-            throw  xpe;
-        } catch (IOException ioe){
-            Log.d(TAG,"Error i/o with changelog.xml",ioe);
+            Log.d(TAG, "XmlPullParseException while parsing changelog file", xpe);
+            throw xpe;
+        } catch (IOException ioe) {
+            Log.d(TAG, "Error i/o with changelog.xml", ioe);
             throw ioe;
         }
 
@@ -200,9 +208,9 @@ public class XmlParser extends BaseParser {
      * @param parser
      * @param changeLog
      */
-    protected void readChangeLogNode(XmlPullParser parser,ChangeLog changeLog) throws Exception{
+    protected void readChangeLogNode(XmlPullParser parser, ChangeLog changeLog) throws Exception {
 
-        if (parser==null || changeLog==null) return;
+        if (parser == null || changeLog == null) return;
 
         // Parse changelog node
         parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOG);
@@ -210,12 +218,12 @@ public class XmlParser extends BaseParser {
 
         // Read attributes
         String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
-        if (bulletedList==null || bulletedList.equals("true")){
+        if (bulletedList == null || bulletedList.equals("true")) {
             changeLog.setBulletedList(true);
-            super.bulletedList=true;
-        }else{
+            super.bulletedList = true;
+        } else {
             changeLog.setBulletedList(false);
-            super.bulletedList=false;
+            super.bulletedList = false;
         }
 
         //Parse nested nodes
@@ -240,11 +248,11 @@ public class XmlParser extends BaseParser {
      * @param changeLog
      * @throws Exception
      */
-    protected void readChangeLogVersionNode(XmlPullParser parser, ChangeLog changeLog) throws  Exception{
+    protected void readChangeLogVersionNode(XmlPullParser parser, ChangeLog changeLog) throws Exception {
 
-        if (parser==null) return;
+        if (parser == null) return;
 
-        parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOGVERSION);
+        parser.require(XmlPullParser.START_TAG, null, TAG_CHANGELOGVERSION);
 
         // Read attributes
         String versionName = parser.getAttributeValue(null, ATTRIBUTE_VERSIONNAME);
@@ -257,13 +265,16 @@ public class XmlParser extends BaseParser {
                 Log.w(TAG,"Error while parsing versionCode.It must be a numeric value. Check you file.");
             }
         }
-        String changeDate= parser.getAttributeValue(null, ATTRIBUTE_CHANGEDATE);
-        if (versionName==null)
+        if (versionCode < mMinimumVersionCode) return;
+        if (changeLog.getHeaderRowCount() == mMaximumNumberOfLogs) return;
+
+        String changeDate = parser.getAttributeValue(null, ATTRIBUTE_CHANGEDATE);
+        if (versionName == null)
             throw new ChangeLogException("VersionName required in changeLogVersion node");
 
         ChangeLogRowHeader row=new ChangeLogRowHeader();
         row.setVersionName(versionName);
-        //row.setVersionCode(versionCode);
+        row.setVersionCode(versionCode);
         row.setChangeDate(changeDate);
         changeLog.addRow(row);
 
@@ -275,16 +286,16 @@ public class XmlParser extends BaseParser {
                 continue;
             }
             String tag = parser.getName();
-            //Log.d(TAG,"Processing tag="+tag);
+            Log.d(TAG, "Processing tag=" + tag);
 
-            if (mChangeLogTags.contains(tag)){
-                readChangeLogRowNode(parser, changeLog,versionName,versionCode);
+            if (mChangeLogTags.contains(tag)) {
+                readChangeLogRowNode(parser, changeLog, versionName, versionCode);
             }
         }
     }
 
     /**
-     *  Parse changeLogText node
+     * Parse changeLogText node
      *
      * @param parser
      * @param changeLog
