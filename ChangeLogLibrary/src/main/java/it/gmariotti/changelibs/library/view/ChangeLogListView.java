@@ -136,21 +136,18 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
             //ChangeLog chg=parse.readChangeLogFile();
             ChangeLog chg = new ChangeLog();
 
-            if (chg!=null){
-                //Create adapter and set custom attrs
-                mAdapter = new ChangeLogAdapter(getContext(),chg.getRows());
-                mAdapter.setmRowLayoutId(mRowLayoutId);
-                mAdapter.setmRowHeaderLayoutId(mRowHeaderLayoutId);
+			//Create adapter and set custom attrs
+			mAdapter = new ChangeLogAdapter(getContext(),chg.getRows());
+			mAdapter.setmRowLayoutId(mRowLayoutId);
+			mAdapter.setmRowHeaderLayoutId(mRowHeaderLayoutId);
 
-                //Parse in a separate Thread to avoid UI block with large files
-                if (mChangeLogFileResourceUrl==null || (mChangeLogFileResourceUrl!=null && Util.isConnected(getContext())))
-                    new ParseAsyncTask(mAdapter,parse).execute();
-                else
-                    Toast.makeText(getContext(),R.string.changelog_internal_error_internet_connection,Toast.LENGTH_LONG).show();
-                setAdapter(mAdapter);
-            }else{
-                setAdapter(null);
-            }
+			//Parse in a separate Thread to avoid UI block with large files
+			if (mChangeLogFileResourceUrl==null || (mChangeLogFileResourceUrl!=null && Util.isConnected(getContext())))
+				new ParseAsyncTask(mAdapter,parse).execute();
+			else
+				Toast.makeText(getContext(),R.string.changelog_internal_error_internet_connection,Toast.LENGTH_LONG).show();
+			setAdapter(mAdapter);
+
         }catch (Exception e){
             Log.e(TAG,getResources().getString(R.string.changelog_internal_error_parsing),e);
         }
