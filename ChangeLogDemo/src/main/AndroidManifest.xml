@@ -7,14 +7,14 @@
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="19"
+        android:targetSdkVersion="22"
         tools:overrideLibrary="org.lucasr.dspec"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/demo_changelog_app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.ChangeLogDemo" >
 
         <activity android:name=".MainActivity">
             <intent-filter>
