@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/example"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ex_standard"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_standard"/>
+
+        <item
+            android:id="@+id/nav_ex_material"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_material"/>
+        <item
+            android:id="@+id/nav_ex_dialo"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_dialog"/>
+        <item
+            android:id="@+id/nav_ex_without_bull"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_without_bullter"/>
+        <item
+            android:id="@+id/nav_ex_custom_xml"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_custom_xml"/>
+        <item
+            android:id="@+id/nav_ex_custom_header"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_custom_header"/>
+        <item
+            android:id="@+id/nav_ex_custom_row"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/navdrawer_item_custom_row"/>
+    </group>
+
+    <group
+        android:id="@+id/other"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_other_github"
+            android:icon="@drawable/ic_github"
+            android:title="@string/navdrawer_item_github"/>
+        <item
+            android:id="@+id/nav_other_donate"
+            android:icon="@drawable/ic_money"
+            android:title="@string/navdrawer_item_donate"/>
+        <item
+            android:id="@+id/nav_other_info"
+            android:icon="@drawable/ic_l_info"
+            android:title="@string/navdrawer_item_info"/>
+    </group>
+
+</menu>

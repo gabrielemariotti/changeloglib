@@ -15,7 +15,6 @@
  ******************************************************************************/
 package it.gmariotti.changelog.demo;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,7 +25,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -42,7 +42,7 @@ import it.gmariotti.changelibs.library.view.ChangeLogListView;
  */
 public class Utils {
 
-    public static void showAbout(ActionBarActivity activity) {
+    public static void showAbout(AppCompatActivity activity) {
 
         FragmentManager fm = activity.getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -95,7 +95,7 @@ public class Utils {
             aboutBodyView.setText(Html.fromHtml(getString(R.string.about_body)));
             aboutBodyView.setMovementMethod(new LinkMovementMethod());
 
-            return new AlertDialog.Builder(getActivity())
+            return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
                     //.setTitle(R.string.title_about)
                     .setView(rootView)
                     .setPositiveButton(R.string.about_ok,
@@ -109,7 +109,7 @@ public class Utils {
         }
     }
 
-    public static void showChangeLog(ActionBarActivity activity) {
+    public static void showChangeLog(AppCompatActivity activity) {
 
         FragmentManager fm = activity.getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -139,7 +139,7 @@ public class Utils {
             ChangeLogListView chgList=(ChangeLogListView)layoutInflater.inflate(R.layout.demo_changelog_dialog_changelog, null);
 
 
-            return new AlertDialog.Builder(getActivity())
+            return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
                     .setTitle(R.string.demo_changelog_title_changelog)
                     .setView(chgList)
                     .setPositiveButton(R.string.about_ok,

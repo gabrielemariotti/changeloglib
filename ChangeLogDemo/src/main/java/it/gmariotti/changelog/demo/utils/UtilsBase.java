@@ -18,61 +18,26 @@
 
 package it.gmariotti.changelog.demo.utils;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 
 import it.gmariotti.changelog.demo.R;
 
 
 public class UtilsBase {
 
-    protected ActionBarActivity mActivity;
+    protected AppCompatActivity mActivity;
     private ActionBarDrawerToggle mDrawerToggle;
     private ActionBarDrawerToggleWrapper mDrawerToggleWrapper;
 
-    public UtilsBase(ActionBarActivity activity) {
+    public UtilsBase(AppCompatActivity activity) {
         mActivity = activity;
     }
 
-    public boolean hasLPreviewAPIs() {
-        return false;
-    }
-
-    //----------------------------------------------------------------------------
-    // ActionBar
-    //----------------------------------------------------------------------------
-
-    public void trySetActionBar() {
-        // Do nothing pre-L
-    }
-
-    public boolean shouldChangeActionBarForDrawer() {
-        return true;
-    }
-
-    public void showHideActionBarIfPartOfDecor(boolean show) {
-        // pre-L, action bar is always part of the window decor
-        if (show) {
-            mActivity.getSupportActionBar().show();
-        } else {
-            mActivity.getSupportActionBar().hide();
-        }
-    }
-
-    //----------------------------------------------------------------------------
-    // Circle Button
-    //----------------------------------------------------------------------------
-
-    public void setupCircleButton(ImageButton sourceButton) {
-        // Do nothing pre-L
-    }
     //----------------------------------------------------------------------------
     // Navigation Drawer
     //----------------------------------------------------------------------------
@@ -100,8 +65,8 @@ public class UtilsBase {
 
     public ActionBarDrawerToggleWrapper setupDrawerToggle(DrawerLayout drawerLayout,
                                                           final DrawerLayout.DrawerListener drawerListener) {
-        mDrawerToggle = new ActionBarDrawerToggle(mActivity, drawerLayout,
-                R.drawable.ic_navigation_drawer, R.string.demo_changelog_app_name, R.string.demo_changelog_app_name) {
+        mDrawerToggle = new ActionBarDrawerToggle(mActivity, drawerLayout
+                , R.string.demo_changelog_app_name, R.string.demo_changelog_app_name) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -130,40 +95,5 @@ public class UtilsBase {
         mDrawerToggleWrapper = new ActionBarDrawerToggleWrapper();
         return mDrawerToggleWrapper;
     }
-
-    //----------------------------------------------------------------------------
-    // Methods
-    //----------------------------------------------------------------------------
-
-    public void startActivityWithTransition(Intent intent, View clickedView,
-            String sharedElementName) {
-        mActivity.startActivity(intent);
-    }
-
-    public void setViewName(View v, String viewName) {
-        // Can't do this pre-L
-    }
-
-    public void postponeEnterTransition() {
-        // Can't do this pre-L
-    }
-
-    public void startPostponedEnterTransition() {
-        // Can't do this pre-L
-    }
-
-    public int getStatusBarColor() {
-        // On pre-L devices, you can have any status bar color so long as it's black.
-        return Color.BLACK;
-    }
-
-    public void setStatusBarColor(int color) {
-        // Only black.
-    }
-
-    public void setViewElevation(View v, float elevation) {
-        // Can't do this pre-L
-    }
-
 
 }

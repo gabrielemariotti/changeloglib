@@ -18,7 +18,7 @@
 
 package it.gmariotti.changelog.demo.iabutils;
 
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -26,7 +26,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -204,7 +205,7 @@ public class IabUtil {
     }
 
 
-    public static void showBeer(ActionBarActivity activity, IabHelper helper) {
+    public static void showBeer(AppCompatActivity activity, IabHelper helper) {
 
         FragmentManager fm = activity.getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

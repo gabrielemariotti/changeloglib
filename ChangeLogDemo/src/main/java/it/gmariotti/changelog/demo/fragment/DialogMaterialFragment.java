@@ -17,12 +17,12 @@
  */
 package it.gmariotti.changelog.demo.fragment;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
 import it.gmariotti.changelibs.library.view.ChangeLogListView;
@@ -45,7 +45,7 @@ public class DialogMaterialFragment extends DialogFragment {
                     Context.LAYOUT_INFLATER_SERVICE);
             ChangeLogListView chgList=(ChangeLogListView)layoutInflater.inflate(R.layout.demo_changelog_fragment_dialogmaterial, null);
 
-            return new AlertDialog.Builder(getActivity())
+            return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
                     .setTitle(R.string.demo_changelog_title_standarddialog)
                     .setView(chgList)
                     .setPositiveButton(R.string.about_ok,
