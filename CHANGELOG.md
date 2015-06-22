@@ -1,6 +1,13 @@
 Change Log
 ===============================================================================
 
+Version 2.0.0 *(2015-06-23)*
+----------------------------
+ * Added the new view ChangeLogRecyclerView to support the Material design and the new CoordinatorLayout
+ * Added the setNestedScrollingEnabled to support the CoordinatorLayout with API 21+ with the ChangeLogListView
+ * Added support for last support libraries 22.2.0
+ * Updated to gradle 2.4 and gradle plugin 1.2.x
+
 Version 1.5.2 *(2014-10-14)*
 ----------------------------
  * Added new layouts with Material specs [(doc)](/doc/CUSTOMIZATION.md#layouts-with-material-specs)
