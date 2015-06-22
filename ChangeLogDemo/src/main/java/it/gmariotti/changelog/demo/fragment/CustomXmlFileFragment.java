@@ -61,6 +61,6 @@ public class CustomXmlFileFragment extends BaseFragment {
 
     @Override
     public int getSelfNavDrawerItem() {
-        return MainActivity.NAVDRAWER_ITEM_CUSTOM_XML;
+        return R.id.nav_ex_custom_xml;
     }
 }

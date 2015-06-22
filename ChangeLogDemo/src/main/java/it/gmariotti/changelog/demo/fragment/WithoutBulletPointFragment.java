@@ -51,6 +51,6 @@ public class WithoutBulletPointFragment extends BaseFragment {
 
     @Override
     public int getSelfNavDrawerItem() {
-        return MainActivity.NAVDRAWER_ITEM_WITHOUT_BULLET;
+        return R.id.nav_ex_without_bull;
     }
 }

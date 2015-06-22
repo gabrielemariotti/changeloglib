@@ -26,6 +26,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
 import it.gmariotti.changelibs.library.view.ChangeLogListView;
+import it.gmariotti.changelibs.library.view.ChangeLogRecyclerView;
 import it.gmariotti.changelog.demo.R;
 
 
@@ -43,7 +44,7 @@ public class DialogMaterialFragment extends DialogFragment {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            ChangeLogListView chgList=(ChangeLogListView)layoutInflater.inflate(R.layout.demo_changelog_fragment_dialogmaterial, null);
+            ChangeLogRecyclerView chgList= (ChangeLogRecyclerView) layoutInflater.inflate(R.layout.demo_changelog_fragment_dialogmaterial, null);
 
             return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
                     .setTitle(R.string.demo_changelog_title_standarddialog)

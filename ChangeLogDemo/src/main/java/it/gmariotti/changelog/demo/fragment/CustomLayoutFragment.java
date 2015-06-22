@@ -59,6 +59,6 @@ public class CustomLayoutFragment extends BaseFragment {
 
     @Override
     public int getSelfNavDrawerItem() {
-        return MainActivity.NAVDRAWER_ITEM_CUSTOM_HEADER;
+        return R.id.nav_ex_custom_header;
     }
 }

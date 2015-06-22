@@ -47,6 +47,6 @@ public class MaterialFragment extends BaseFragment {
 
     @Override
     public int getSelfNavDrawerItem() {
-        return MainActivity.NAVDRAWER_ITEM_MAT;
+        return R.id.nav_ex_material;
     }
 }

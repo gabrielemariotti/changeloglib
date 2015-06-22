@@ -8,11 +8,7 @@
     android:fitsSystemWindows="true">
 
     <!-- The main content view -->
-    <FrameLayout
-        android:id="@+id/fragment_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    <include layout="@layout/demo_changelog_maincontent"></include>
 
 
     <android.support.design.widget.NavigationView

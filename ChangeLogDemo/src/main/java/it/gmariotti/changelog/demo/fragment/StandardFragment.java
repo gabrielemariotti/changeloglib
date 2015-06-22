@@ -45,6 +45,6 @@ public class StandardFragment extends BaseFragment {
 
     @Override
     public int getSelfNavDrawerItem() {
-        return MainActivity.NAVDRAWER_ITEM_STD;
+        return R.id.nav_ex_standard;
     }
 }

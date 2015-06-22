@@ -17,25 +17,14 @@
   ~    *****************************************************************************
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:chg="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
     <!-- Base Example -->
-    <view
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="it.gmariotti.changelibs.library.view.ChangeLogListView"
-            android:id="@+id/view"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:clipToPadding="false"
-            android:scrollbarStyle="outsideOverlay"
-            chg:rowHeaderLayoutId="@layout/changelogrowheader_material_layout"
-            chg:rowLayoutId="@layout/changelogrow_material_layout"
-            android:layout_gravity="center"
-            />
+<it.gmariotti.changelibs.library.view.ChangeLogRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:chg="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    chg:rowHeaderLayoutId="@layout/changelogrowheader_material_layout"
+    chg:rowLayoutId="@layout/changelogrow_material_layout"
+     />
 
-</LinearLayout>
