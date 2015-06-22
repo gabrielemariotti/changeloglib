@@ -60,18 +60,20 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
     //--------------------------------------------------------------------------
 
     public ChangeLogListView(Context context) {
-        super(context);
-        init(null, 0);
+        this(context, null);
     }
 
     public ChangeLogListView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs,0);
+        this(context, attrs, 0);
     }
 
     public ChangeLogListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs,defStyle);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setNestedScrollingEnabled(true);
+        }
+        init(attrs, defStyle);
     }
 
     //--------------------------------------------------------------------------
@@ -86,7 +88,7 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
      */
     protected void init(AttributeSet attrs, int defStyle){
         //Init attrs
-        initAttrs(attrs,defStyle);
+        initAttrs(attrs, defStyle);
         //Init adapter
         initAdapter();
 
@@ -212,6 +214,4 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //TODO
     }
-
-
 }
