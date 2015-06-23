@@ -3,7 +3,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/chg_rowheader"
               android:layout_width="match_parent"
-              android:layout_height="48dp"
+              android:layout_height="wrap_content"
+              android:minHeight="@dimen/chglib_material_minHeight"
               android:paddingLeft="@dimen/chglib_material_keyline1"
               android:paddingRight="@dimen/chglib_material_keyline1"
               android:gravity="center_vertical"
@@ -31,7 +32,7 @@
     <TextView
             android:id="@+id/chg_headerDate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="@dimen/chglib_material_keyline1"
             android:paddingBottom="@dimen/chglib_material_keyline1"
             android:gravity="center_vertical"

@@ -18,6 +18,6 @@
   -->
 
 <resources>
-    <integer name="font_textStyle_drawer_item">0</integer> <!-- normal -->
-    <string name="font_fontFamily_drawer_item">sans-serif-medium</string>
+    <integer name="font_textStyle_material_item">0</integer> <!-- normal -->
+    <string name="font_fontFamily_material_item">sans-serif</string>
 </resources>
