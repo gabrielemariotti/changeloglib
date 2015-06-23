@@ -22,6 +22,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@android:color/white"
+    android:paddingTop="8dp"
     chg:rowHeaderLayoutId="@layout/changelogrowheader_material_layout"
     chg:rowLayoutId="@layout/changelogrow_material_layout" />

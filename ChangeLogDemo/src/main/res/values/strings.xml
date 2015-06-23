@@ -12,8 +12,11 @@
     <string name="about_body"><![CDATA[
         <b>ChangeLog Library & Demo</b><br>
         Author: <a href="https://plus.google.com/114432517923423045208">Gabriele Mariotti</a><br>
-        <br>
         Get: <a href="https://github.com/gabrielemariotti/changeloglib">Source and doc</a><br>
+        <br>
+        <b>Thanks to:</b><br>
+        dspec by <a href="https://github.com/lucasr/dspec">Lucas Rocha</a><br>
+
     ]]></string>
 
     <!-- Menu -->

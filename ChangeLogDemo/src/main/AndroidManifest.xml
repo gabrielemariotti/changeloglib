@@ -11,7 +11,6 @@
         tools:overrideLibrary="org.lucasr.dspec"/>
 
     <application
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/demo_changelog_app_name"
         android:theme="@style/Theme.ChangeLogDemo" >

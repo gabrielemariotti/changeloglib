@@ -345,7 +345,7 @@ public class IabUtil {
                 });
             }
 
-            return new AlertDialog.Builder(getActivity())
+            return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
                     //.setTitle(R.string.title_about)
                     .setView(rootView)
                     .setPositiveButton(R.string.purchase_cancel,
