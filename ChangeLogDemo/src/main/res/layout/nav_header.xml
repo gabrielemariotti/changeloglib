@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="by Gabriele Mariotti"
         android:textStyle="bold|italic"
-        android:textColor="@color/primary_dark"
+        android:textColor="@color/accent"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
 </LinearLayout>
