@@ -25,29 +25,48 @@ For more examples and screenshots you can read this [document:](/ChangeLogDemo/R
 
 ## Feature
 
-ChangeLog Library provides a custom `ListView` to display a change log through a xml file.
+ChangeLog Library provides a custom `RecyclerView` to display a change log through a xml file.
 
 * you can use it in Activities, Fragments, Dialogs
+* it works with a RecyclerView or a ListView
 * it supports html text markup as bold and italics
 * you can customize layout and behaviour
 * it supports multi language
 * it supports API 7+
 
+## Doc
+
+See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
+
+---
+## Quick Start
+
+ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
+
+    dependencies {
+        compile 'com.github.gabrielemariotti.changeloglib:changelog:2.0.0'
+    }
+
+[To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
+
+
+## ChangeLog
+
+* [Changelog:](CHANGELOG.md) A complete changelog
 
 ## Usage
 
 Implementing this library in your own apps is pretty simple.<br/>
-First, you need an XML layout that will contain the `ChangeLogListView` that displays your changelog.
+First, add in your layout the `ChangeLogRecyclerView ` that displays your changelog.
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
- <view xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:chg="http://schemas.android.com/apk/res-auto"
-       class="it.gmariotti.changelibs.library.view.ChangeLogListView"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/view"
-       />
+<it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center" />
 ```
 
 Then, you need a XML file with change log in `res/raw` folder.
@@ -76,27 +95,6 @@ It automatically searches for [`res/raw/changelog.xml`](/ChangeLogLibrary/src/ma
 Last, if you would like a multi language changelog, you just have to put the translated files `changelog.xml` in the appropriate folders `res/raw-xx/`.
 
 
-## Doc
-
-See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
-
----
-## Quick Start
-
-ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
-
-    dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:library:1.5.2'
-    }
-
-[To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
-
-
-## ChangeLog
-
-* [Changelog:](CHANGELOG.md) A complete changelog
-
-
 Credits
 -------
 
@@ -118,7 +116,7 @@ Author: Gabriele Mariotti (gabri.mariotti@gmail.com)
 License
 -------
 
-    Copyright 2013-2014 Gabriele Mariotti
+    Copyright 2013-2015 Gabriele Mariotti
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

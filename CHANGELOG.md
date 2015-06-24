@@ -3,8 +3,8 @@ Change Log
 
 Version 2.0.0 *(2015-06-23)*
 ----------------------------
- * Added the new view ChangeLogRecyclerView to support the Material design and the new CoordinatorLayout
- * Added the setNestedScrollingEnabled to support the CoordinatorLayout with API 21+ with the ChangeLogListView
+ * Added the new view `ChangeLogRecyclerView` to support the Material design and the new `CoordinatorLayout`
+ * Added the `setNestedScrollingEnabled` to support the CoordinatorLayout with API 21+ with the `ChangeLogListView`
  * Added support for last support libraries 22.2.0
  * Updated to gradle 2.4 and gradle plugin 1.2.x
 
@@ -15,7 +15,7 @@ Version 1.5.2 *(2014-10-14)*
 
 Version 1.5.1 *(2014-06-20)*
 ----------------------------
- * Added new changelogbug and changelogimprovement tags to use fixed prefix in changelog text [(doc)](/doc/CUSTOMIZATION.md#bug-and-improvement-tags)
+ * Added new `changelogbug` and `changelogimprovement` tags to use fixed prefix in changelog text [(doc)](/doc/CUSTOMIZATION.md#bug-and-improvement-tags)
  * Added a feature to make hyperlinks
  * Updated to gradle 1.12 and gradle-plugin 0.11
 

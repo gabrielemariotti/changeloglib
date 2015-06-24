@@ -13,18 +13,21 @@ There are many ways you can customize the changelog view.
 * [Bug and improvement tags](#bug-and-improvement-tags)
 * [Emtpy view](#emtpy-view)
 
+The library uses a custom `RecyclerView` to display the changelog.
+
+If you would like to use a `ListView`, you have the same features changing the `it.gmariotti.changelibs.library.view.ChangeLogRecyclerView` with `it.gmariotti.changelibs.library.view.ChangeLogListView`.
 
 
 ### Custom Header Layout
 
 Library uses `res/layout/changelogrowheader_layout.xml` XML layout for each header.<br/>
-You can use your own xml layout with `chg:rowHeaderLayoutId` attribute in `ChangeLogListView` element.
+You can use your own xml layout with `chg:rowHeaderLayoutId` attribute in `ChangeLogRecyclerView` element.
 
 ``` xml
     <!-- Custom xml file Example and custom header layout -->
-    <view xmlns:android="http://schemas.android.com/apk/res/android"
+    <it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
+          xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:chg="http://schemas.android.com/apk/res-auto"
-          class="it.gmariotti.changelibs.library.view.ChangeLogListView"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           chg:rowHeaderLayoutId="@layout/demo_changelogrowheader_layout"
@@ -42,16 +45,16 @@ You can find an example in [`demo_changelogrowheader_layout.xml`](/ChangeLogDemo
 ### Custom Row Layout
 
 Library uses `res/layout/changelogrow_layout.xml` XML layout for each row.<br/>
-You can use your own xml layout with `chg:rowLayoutId` attribute in `ChangeLogListView` element.
+You can use your own xml layout with `chg:rowLayoutId` attribute in `ChangeLogRecyclerView` element.
 
 ``` xml
 
     <!-- Custom xml file Example and custom header layout -->
-    <view xmlns:android="http://schemas.android.com/apk/res/android"
+    <it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
+          xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:chg="http://schemas.android.com/apk/res-auto"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          class="it.gmariotti.changelibs.library.view.ChangeLogListView"
           chg:rowLayoutId="@layout/demo_changelogrow_layout"
     />
 ```
@@ -75,15 +78,10 @@ You can use them with a simple:
 ``` xml
 
     <!-- Material layout -->
-     <view
+     <it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="it.gmariotti.changelibs.library.view.ChangeLogListView"
         android:id="@+id/view"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
-        android:clipToPadding="false"
-        android:scrollbarStyle="outsideOverlay"
         chg:rowHeaderLayoutId="@layout/changelogrowheader_material_layout"
         chg:rowLayoutId="@layout/changelogrow_material_layout"
         android:layout_gravity="center"
@@ -97,16 +95,16 @@ You can find a screenshot [here](/ChangeLogDemo/README.md#material-specs).
 ### Custom ChangeLog XML
 
 Library uses `res/raw/changelog.xml`.
-You can use your own file with `chg:changeLogFileResourceId` attribute in `ChangeLogListView` element.
+You can use your own file with `chg:changeLogFileResourceId` attribute in `ChangeLogRecyclerView` element.
 
 ``` xml
 
     <!-- Custom xml file Example and custom header layout -->
-    <view xmlns:android="http://schemas.android.com/apk/res/android"
+    <it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
+          xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:chg="http://schemas.android.com/apk/res-auto"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          class="it.gmariotti.changelibs.library.view.ChangeLogListView"
           chg:changeLogFileResourceId="@raw/custom_changelog"
     />
 ```
@@ -180,16 +178,17 @@ You can also customize other strings in the same way. See original `res/string.x
 ### Use an url to download the changelog.xml file
 
 Library uses `res/raw/changelog.xml`.
-You can use a url link to download your xml file with `chg:changeLogFileResourceUrl` attribute in `ChangeLogListView` element.
+
+You can use a url link to download your xml file with `chg:changeLogFileResourceUrl` attribute in `ChangeLogRecyclerView` element.
 
 ``` xml
 
     <!-- Custom xml file Example and custom header layout -->
-    <view xmlns:android="http://schemas.android.com/apk/res/android"
+    <it.gmariotti.changelibs.library.view.ChangeLogRecyclerView
+          xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:chg="http://schemas.android.com/apk/res-auto"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          class="it.gmariotti.changelibs.library.view.ChangeLogListView"
           chg:changeLogFileResourceUrl="http://mydomain.org/changelog.xml"
     />
 ```
@@ -228,46 +227,5 @@ You can customize the prefix text in your project overriding these values in str
 You can use the same html text markup described [above](#Html-text-markup).
 
 
-### Empty view
-
-If you are using a large xml file, or you are using an url to download the changelog file, it would be nice to display an empty view until the list is ready.
-
-The `ChangeLogListView` extends a `ListView` and you can easy use the standard [`list.setEmptyView()`](http://developer.android.com/reference/android/widget/AdapterView.html#setEmptyView(android.view.View)) method to provide your custom view.
-
-For example:
-
-``` java
-
-        ChangeLogListView list = (ChangeLogListView) view.findViewById(R.id.myId);
-        View empty= (View) view.findViewById(R.id.my_empty_view);
-        list.setEmptyView(empty);
-
-```
-
-``` xml
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:chg="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <!-- Base Example -->
-    <view
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="it.gmariotti.changelibs.library.view.ChangeLogListView"
-            android:id="@+id/myId"
-            android:layout_gravity="center"
-            />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/my_empty_view"
-        android:gravity="center"
-        android:text="Loading data"
-        android:layout_height="match_parent"/>
-
-</LinearLayout>
-```
 
 For more detailed information and examples you can read this [document:](/ChangeLogDemo/README.md)
