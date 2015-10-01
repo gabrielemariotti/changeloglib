@@ -43,9 +43,11 @@ See the customisation [page:](/doc/CUSTOMIZATION.md) for more information.
 
 ChangeLog Library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
 
-    dependencies {
-        compile 'com.github.gabrielemariotti.changeloglib:changelog:2.0.0'
-    }
+``` groovy
+dependencies {
+    compile 'com.github.gabrielemariotti.changeloglib:changelog:2.0.0'
+}
+```
 
 [To build the library and demo locally you can see this page for more info](/doc/BUILD.md).
 
