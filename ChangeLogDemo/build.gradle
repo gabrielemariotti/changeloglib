@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
     }
@@ -42,9 +42,9 @@ dependencies {
     // ChangeLog Library
     compile project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
     //To test layout
     compile 'org.lucasr.dspec:dspec:0.1.1'
 }
