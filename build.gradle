@@ -28,4 +28,4 @@ allprojects {
     }
 }
 
-//apply plugin: 'android-reporting'
+apply plugin: 'android-reporting'
