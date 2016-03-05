@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.5.0'
     }
 }
 
@@ -15,8 +15,8 @@ def isReleaseBuild() {
 
 
 ext {
-    compileSdkVersion = 22
-    buildToolsVersion = "22.0.1"
+    compileSdkVersion = 23
+    buildToolsVersion = "23.0.1"
 }
 
 allprojects {
@@ -27,5 +27,3 @@ allprojects {
         mavenCentral()
     }
 }
-
-apply plugin: 'android-reporting'
