@@ -3,7 +3,7 @@
     <!-- Error messages -->
     <string name="changelog_internal_error_parsing">Fehler beim Parsen der Datei</string>
 
-    <string name="changelog_internal_error_internet_connection">Keine Internetverbingung vorhanden. Changelog konnte nicht abgerufen werden.</string>
+    <string name="changelog_internal_error_internet_connection">Keine Internetverbindung vorhanden. Changelog konnte nicht abgerufen werden.</string>
 
     <!-- String for Version Header.
          You can customize it in your strings.xml.
