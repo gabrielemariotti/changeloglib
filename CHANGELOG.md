@@ -1,6 +1,12 @@
 Change Log
 ===============================================================================
 
+Version 2.1.0 *(2016-04-12)*
+----------------------------
+ * Added support for last support libraries 23.3.0
+ * Updated to gradle 2.10 and gradle plugin 2.0.0
+ * Fixed huge space between items
+
 Version 2.0.0 *(2015-06-23)*
 ----------------------------
  * Added the new view `ChangeLogRecyclerView` to support the Material design and the new `CoordinatorLayout`
