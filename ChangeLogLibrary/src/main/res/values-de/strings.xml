@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Error messages -->
+    <string name="changelog_internal_error_parsing">Fehler beim Parsen der Datei</string>
+
+    <string name="changelog_internal_error_internet_connection">Keine Internetverbindung vorhanden. Changelog konnte nicht abgerufen werden.</string>
+
+    <!-- String for Version Header.
+         You can customize it in your strings.xml.
+         Use string with quotes if you want a space -->
+    <string name="changelog_header_version">"Version "</string>
+
+    <!-- BulletPoint
+        You can customize it in your strings.xml
+        If you don't want a bulletpoint you can specify it in your changelog.xml-->
+    <string name="changelog_row_bulletpoint">\u2022</string>
+
+    <!-- Prefix for Bug type change log -->
+    <string name="changelog_row_prefix_bug">[b]Bug:[/b]</string>
+
+    <!-- Prefix for Improvement type change log -->
+    <string name="changelog_row_prefix_improvement">[b]Neu:[/b]</string>
+
+</resources>
