@@ -66,7 +66,7 @@ public class IabUtil {
     String p3="5.00€";
 
     private IabUtil() {
-        items = new HashMap<String, DonationEntry>();
+        items = new HashMap<>();
         items.put(SMALL_BEER_SKU, new DonationEntry(SMALL_BEER_SKU, R.string.demo_item_small_beer, p1));
         items.put(MEDIUM_BEER_SKU, new DonationEntry(MEDIUM_BEER_SKU, R.string.demo_item_medium_beer, p2));
         items.put(LARGE_BEER_SKU, new DonationEntry(LARGE_BEER_SKU, R.string.demo_item_large_beer, p3));

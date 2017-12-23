@@ -21,11 +21,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
-import it.gmariotti.changelibs.library.view.ChangeLogListView;
 import it.gmariotti.changelibs.library.view.ChangeLogRecyclerView;
 import it.gmariotti.changelog.demo.R;
 
@@ -37,27 +37,27 @@ import it.gmariotti.changelog.demo.R;
  */
 public class DialogMaterialFragment extends DialogFragment {
 
-        public DialogMaterialFragment() {
-        }
+    public DialogMaterialFragment() {
+    }
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE);
-            ChangeLogRecyclerView chgList= (ChangeLogRecyclerView) layoutInflater.inflate(R.layout.demo_changelog_fragment_dialogmaterial, null);
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ChangeLogRecyclerView chgList = (ChangeLogRecyclerView) layoutInflater.inflate(R.layout.demo_changelog_fragment_dialogmaterial, null);
 
-            return new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle)
-                    .setTitle(R.string.demo_changelog_title_standarddialog)
-                    .setView(chgList)
-                    .setPositiveButton(R.string.about_ok,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    dialog.dismiss();
-                                }
+        return new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle)
+                .setTitle(R.string.demo_changelog_title_standarddialog)
+                .setView(chgList)
+                .setPositiveButton(R.string.about_ok,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                dialog.dismiss();
                             }
-                    )
-                    .create();
+                        }
+                )
+                .create();
 
-        }
+    }
 
 }
