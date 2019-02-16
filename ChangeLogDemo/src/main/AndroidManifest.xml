@@ -5,10 +5,7 @@
 
     <uses-permission android:name="com.android.vending.BILLING" />
 
-    <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="23"
-        tools:overrideLibrary="org.lucasr.dspec"/>
+    <uses-sdk tools:overrideLibrary="org.lucasr.dspec"/>
 
     <application
         android:icon="@drawable/ic_launcher"

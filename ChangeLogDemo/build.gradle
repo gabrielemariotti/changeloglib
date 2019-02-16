@@ -6,11 +6,10 @@ repositories {
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
     }
@@ -40,13 +39,13 @@ android {
 
 dependencies {
     // ChangeLog Library
-    compile project(':ChangeLogLibrary')
+    implementation project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
+    implementation "com.android.support:support-v4:$supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:design:$supportLibVersion"
     //To test layout
-    compile 'org.lucasr.dspec:dspec:0.1.1'
+    implementation 'org.lucasr.dspec:dspec:0.1.1'
 }
 
 def Properties props = new Properties()

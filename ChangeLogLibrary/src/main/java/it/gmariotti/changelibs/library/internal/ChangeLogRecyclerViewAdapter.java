@@ -33,19 +33,18 @@ import java.util.List;
 
 import it.gmariotti.changelibs.R;
 import it.gmariotti.changelibs.library.Constants;
-import it.gmariotti.changelibs.library.view.ChangeLogRecyclerView;
 
 /**
  * Created by g.mariotti on 17/06/2015.
  */
 public class ChangeLogRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int TYPE_ROW = 0;
+    private static final int TYPE_ROW    = 0;
     private static final int TYPE_HEADER = 1;
 
     private final Context mContext;
-    private int mRowLayoutId = Constants.mRowLayoutId;
-    private int mRowHeaderLayoutId = Constants.mRowHeaderLayoutId;
+    private int mRowLayoutId         = Constants.mRowLayoutId;
+    private int mRowHeaderLayoutId   = Constants.mRowHeaderLayoutId;
     private int mStringVersionHeader = Constants.mStringVersionHeader;
 
     private List<ChangeLogRow> items;
@@ -54,7 +53,7 @@ public class ChangeLogRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     // Constructors
     // -------------------------------------------------------------
 
-    public ChangeLogRecyclerViewAdapter(Context mContext,List<ChangeLogRow> items ) {
+    public ChangeLogRecyclerViewAdapter(Context mContext, List<ChangeLogRow> items) {
         this.mContext = mContext;
         if (items == null)
             items = new ArrayList<>();
@@ -62,9 +61,9 @@ public class ChangeLogRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     public void add(LinkedList<ChangeLogRow> rows) {
-        int originalPosition= items.size();
+        int originalPosition = items.size();
         items.addAll(rows);
-        notifyItemRangeInserted(originalPosition,originalPosition+rows.size());
+        notifyItemRangeInserted(originalPosition, originalPosition + rows.size());
     }
 
 
@@ -111,23 +110,23 @@ public class ChangeLogRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         if (isHeader(position)) {
-            populateViewHolderHeader((ViewHolderHeader)viewHolder, position);
+            populateViewHolderHeader((ViewHolderHeader) viewHolder, position);
         } else {
             populateViewHolderRow((ViewHolderRow) viewHolder, position);
         }
     }
 
     private void populateViewHolderRow(ViewHolderRow viewHolder, int position) {
-        ChangeLogRow  item = getItem(position);
-        if (item != null){
-            if (viewHolder.textRow != null){
+        ChangeLogRow item = getItem(position);
+        if (item != null) {
+            if (viewHolder.textRow != null) {
                 viewHolder.textRow.setText(Html.fromHtml(item.getChangeText(mContext)));
                 viewHolder.textRow.setMovementMethod(LinkMovementMethod.getInstance());
             }
-            if (viewHolder.bulletRow!=null){
-                if (item.isBulletedList()){
+            if (viewHolder.bulletRow != null) {
+                if (item.isBulletedList()) {
                     viewHolder.bulletRow.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     viewHolder.bulletRow.setVisibility(View.GONE);
                 }
             }
@@ -135,7 +134,7 @@ public class ChangeLogRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     private void populateViewHolderHeader(ViewHolderHeader viewHolder, int position) {
-        ChangeLogRow  item = getItem(position);
+        ChangeLogRow item = getItem(position);
         if (item != null) {
             if (viewHolder.versionHeader != null) {
                 StringBuilder sb = new StringBuilder();
